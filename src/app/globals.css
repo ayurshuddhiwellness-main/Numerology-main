@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/*
+  Design tokens from the Figma file (Calestial template, rebranded).
+  Change these to re-skin the whole site for another client.
+*/
+@theme {
+  --color-ink: #14040a;        /* page background (Solid Color/1) */
+  --color-ink-2: #1e0710;      /* raised surface */
+  --color-maroon: #6e1424;     /* glow / accent (Gradient/1) */
+  --color-maroon-2: #8a1c2e;
+  --color-gold: #d6af54;       /* primary accent (Solid Color/3) */
+  --color-gold-soft: #f3e3bc;
+  --color-cream: #e2e2e2;      /* body text (Solid Color/5) */
+
+  --font-display: "Cormorant", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+
+  --container-site: 1728px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* Soft card used by Why Choose Us, Forecast and Pricing */
+.glass-card {
+  background: linear-gradient(180deg, rgba(110, 20, 36, 0.18), rgba(20, 4, 10, 0.4));
+  border: 1px solid rgba(214, 175, 84, 0.25);
+  border-radius: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
