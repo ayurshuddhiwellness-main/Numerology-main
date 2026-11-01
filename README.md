@@ -13,6 +13,10 @@ Then open http://localhost:3000.
 
 To check a production build: `npm run build && npm start`.
 
+## Deploying
+
+Import the repo on [Vercel](https://vercel.com/new). No settings need changing; every push to `main` redeploys.
+
 ## Where things live
 
 | What | File |
