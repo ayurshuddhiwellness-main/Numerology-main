@@ -1,10 +1,11 @@
-import { commitments, experts, forecast, reasons, services } from "@/content/site";
-import { Button, Container, Eyebrow, NumeralArt, Title } from "./ui";
+import { commitments, experts, numbers, reasons, services } from "@/content/site";
+import { ExpertCard, NumberCard, ServiceRow } from "./cards";
+import { Button, Container, Eyebrow, Glow, NumeralArt, Title } from "./ui";
 
-/* ---------- About / commitment ---------- */
-export function About() {
+/* ---------- Commitment statement + three points (Home, About) ---------- */
+export function Commitments({ id }: { id?: string }) {
   return (
-    <section id="about" className="py-20 lg:py-[115px]">
+    <section id={id} className="py-20 lg:py-[115px]">
       <Container>
         <p className="font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[64px] [&_em]:italic">
           With <em>Dr. Abbhiraath Singh</em>, you discover what your name and date of birth reveal about your nature,
@@ -18,14 +19,14 @@ export function About() {
             </div>
           ))}
         </div>
-        <NumeralArt numeral="9" label="Decorative numerology artwork" className="mt-14 h-56 sm:h-72 lg:mt-20 lg:h-[388px]" />
+        <NumeralArt numeral="9" label="Decorative numerology artwork" className="mt-14 h-56 sm:h-72 lg:mt-20 lg:h-[380px]" />
       </Container>
     </section>
   );
 }
 
-/* ---------- Team ---------- */
-export function Experts() {
+/* ---------- Team preview (Home) ---------- */
+export function ExpertsPreview() {
   return (
     <section className="py-20 lg:py-[115px]">
       <Container>
@@ -33,18 +34,13 @@ export function Experts() {
           <Title>
             Meet Our <em>Experts</em>
           </Title>
-          <Button href="#about" variant="outline">
+          <Button href="/experts" variant="outline">
             All Experts
           </Button>
         </div>
         <ul className="mt-12 grid grid-cols-2 gap-5 lg:mt-16 lg:grid-cols-4 lg:gap-6">
-          {experts.map((p, i) => (
-            <li key={p.name} className="text-center">
-              {/* TODO: swap NumeralArt for each person's photo */}
-              <NumeralArt numeral={String(i + 1)} label={`Photo of ${p.name}`} className="aspect-[417/504]" />
-              <h3 className="mt-5 font-display text-xl font-bold text-white lg:text-[32px]">{p.name}</h3>
-              <p className="mt-1 text-sm text-gold lg:text-base">{p.role}</p>
-            </li>
+          {experts.slice(0, 4).map((p, i) => (
+            <ExpertCard key={p.name} {...p} index={i} />
           ))}
         </ul>
       </Container>
@@ -52,11 +48,11 @@ export function Experts() {
   );
 }
 
-/* ---------- Why choose us ---------- */
+/* ---------- Why choose us (Home, About) ---------- */
 export function WhyChooseUs() {
   return (
     <section className="relative isolate overflow-hidden py-20 lg:py-[115px]">
-      <div aria-hidden="true" className="absolute top-1/2 left-1/2 -z-10 h-[60%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-maroon/50 blur-[120px]" />
+      <Glow className="top-1/2 left-1/2 h-[60%] w-[70%] -translate-x-1/2 -translate-y-1/2 bg-maroon/50" />
       <Container>
         <Eyebrow>Why choose us</Eyebrow>
         <Title>
@@ -76,8 +72,8 @@ export function WhyChooseUs() {
   );
 }
 
-/* ---------- Services (alternating rows) ---------- */
-export function Services() {
+/* ---------- Services preview (Home: first three) ---------- */
+export function ServicesPreview() {
   return (
     <section id="services" className="py-20 lg:py-[115px]">
       <Container>
@@ -88,21 +84,13 @@ export function Services() {
               Our <em>Numerology</em> Services
             </Title>
           </div>
-          <Button href="#consultations" variant="outline">
+          <Button href="/services" variant="outline">
             See All Services
           </Button>
         </div>
-
         <div className="mt-14 flex flex-col gap-14 lg:mt-20 lg:gap-24">
-          {services.map((s, i) => (
-            <article key={s.title} className="grid items-center gap-8 md:grid-cols-2 lg:gap-24">
-              <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                <span className="text-lg font-semibold text-gold lg:text-[22px]">0{i + 1}</span>
-                <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[40px]">{s.title}</h3>
-                <p className="mt-4 max-w-[560px] text-base leading-relaxed lg:text-xl">{s.body}</p>
-              </div>
-              <NumeralArt numeral={s.numeral} label={`${s.title} artwork`} className="h-56 sm:h-72 lg:h-[330px]" />
-            </article>
+          {services.slice(0, 3).map((s, i) => (
+            <ServiceRow key={s.slug} service={s} index={i} showButton={false} />
           ))}
         </div>
       </Container>
@@ -110,34 +98,33 @@ export function Services() {
   );
 }
 
-/* ---------- Weekly forecast ---------- */
-export function Forecast() {
+/* ---------- Weekly forecast grid (Home: 1–6, Forecast page: all) ---------- */
+export function ForecastGrid({ limit, showTitle = true, showButton = true }: { limit?: number; showTitle?: boolean; showButton?: boolean }) {
+  const list = limit ? numbers.slice(0, limit) : numbers;
   return (
     <section id="forecast" className="relative isolate overflow-hidden py-20 lg:py-[115px]">
-      <div aria-hidden="true" className="absolute top-1/3 left-1/3 -z-10 h-[40%] w-[40%] rounded-full bg-gold/15 blur-[120px]" />
+      <Glow className="top-1/3 left-1/3 h-[40%] w-[40%] bg-gold/15" />
       <Container className="text-center">
-        <Eyebrow>Weekly forecast</Eyebrow>
-        <Title className="mx-auto max-w-[1100px]">
-          What the numbers hold for you in this <em>Weekly Forecast</em>
-        </Title>
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
-          {forecast.map((f) => (
-            <li key={f.number} className="glass-card px-7 py-10 text-center">
-              <span aria-hidden="true" className="font-display text-6xl leading-none font-bold text-gold italic">
-                {f.number}
-              </span>
-              <h3 className="mt-4 font-display text-3xl font-bold text-white lg:text-[40px]">
-                Number {f.number} ({f.planet})
-              </h3>
-              <p className="mt-4 text-base leading-relaxed lg:text-xl">{f.text}</p>
-            </li>
+        {showTitle && (
+          <>
+            <Eyebrow>Weekly forecast</Eyebrow>
+            <Title className="mx-auto max-w-[1100px]">
+              What the numbers hold for you in this <em>Weekly Forecast</em>
+            </Title>
+          </>
+        )}
+        <ul className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 ${showTitle ? "mt-12 lg:mt-16" : ""}`}>
+          {list.map((n) => (
+            <NumberCard key={n.number} n={n} />
           ))}
         </ul>
-        <div className="mt-12">
-          <Button href="#forecast" variant="outline">
-            All Numbers
-          </Button>
-        </div>
+        {showButton && (
+          <div className="mt-12">
+            <Button href="/forecast" variant="outline">
+              All Numbers
+            </Button>
+          </div>
+        )}
       </Container>
     </section>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
-/* Reusable building blocks shared by every section. */
+/* Reusable building blocks shared by every page. */
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12 ${className}`}>{children}</div>;
@@ -10,32 +10,57 @@ export function Container({ children, className = "" }: { children: ReactNode; c
 type ButtonProps = { href: string; children: ReactNode; variant?: "filled" | "outline"; className?: string };
 
 export function Button({ href, children, variant = "filled", className = "" }: ButtonProps) {
-  const base =
-    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
-  const styles =
-    variant === "filled"
-      ? "bg-gold text-ink hover:bg-gold-soft"
-      : "border border-gold text-gold hover:bg-gold hover:text-ink";
   return (
-    <Link href={href} className={`${base} ${styles} ${className}`}>
+    <Link href={href} className={`${buttonClass(variant)} ${className}`}>
       {children}
     </Link>
   );
 }
 
-/** Small gold label above section titles, e.g. "SERVICES". */
-export function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg">{children}</p>;
+export function buttonClass(variant: "filled" | "outline" = "filled") {
+  const base =
+    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer";
+  return variant === "filled"
+    ? `${base} bg-gold text-ink hover:bg-gold-soft`
+    : `${base} border border-gold text-gold hover:bg-gold hover:text-ink`;
 }
 
-/** Section title. Wrap a word in <em> to get the gold-free italic accent from the design. */
-export function Title({ children, className = "" }: { children: ReactNode; className?: string }) {
+/** Small gold label above section titles, e.g. "SERVICES". */
+export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <h2
+    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg ${className}`}>{children}</p>
+  );
+}
+
+/** Section title. Wrap a word in <em> to get the italic accent from the design. */
+export function Title({ children, className = "", as: Tag = "h2" }: { children: ReactNode; className?: string; as?: "h1" | "h2" }) {
+  return (
+    <Tag
       className={`font-display text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[64px] [&_em]:italic ${className}`}
     >
       {children}
-    </h2>
+    </Tag>
+  );
+}
+
+/**
+ * Inner-page header from the Figma "Header" component:
+ * a very large centred title with a wide image below it.
+ */
+export function PageHeader({ title, numeral, label }: { title: ReactNode; numeral: string; label?: string }) {
+  return (
+    <section className="pt-28 lg:pt-[220px]">
+      <Container>
+        <h1 className="text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(88px,7.3vw,140px)]">
+          {title}
+        </h1>
+        <NumeralArt
+          numeral={numeral}
+          label={label ?? "Decorative numerology artwork"}
+          className="mt-8 h-52 sm:h-72 lg:mt-12 lg:h-[450px]"
+        />
+      </Container>
+    </section>
   );
 }
 
@@ -58,15 +83,15 @@ export function SwastikSeal({ size = 41, className = "" }: { size?: number; clas
 
 export function Logo() {
   return (
-    <Link href="#top" className="flex items-center gap-3 text-gold" aria-label="Dr. Abbhiraath Singh, home">
+    <Link href="/" className="flex items-center gap-3 text-gold" aria-label="Dr. Abbhiraath Singh, home">
       <SwastikSeal size={41} />
-      <span className="font-display text-2xl font-bold lg:text-[26px]">Dr. Abbhiraath Singh</span>
+      <span className="font-display text-2xl font-bold whitespace-nowrap lg:text-[26px]">Dr. Abbhiraath Singh</span>
     </Link>
   );
 }
 
-/** Four-point sparkle used as decoration in the hero. */
-export function Sparkle({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
+/** Four-point sparkle used as decoration. */
+export function Sparkle({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={className} style={style}>
       <path d="M16 0C17 9 23 15 32 16C23 17 17 23 16 32C15 23 9 17 0 16C9 15 15 9 16 0Z" fill="currentColor" />
@@ -77,7 +102,7 @@ export function Sparkle({ className = "", style }: { className?: string; style?:
 /**
  * Stand-in artwork for spots where the template had stock photos.
  * Shows a large numeral on a maroon glow so the layout still reads well
- * until real photography is added.
+ * until real photography is added. TODO: replace with real images.
  */
 export function NumeralArt({ numeral, label, className = "" }: { numeral: string; label: string; className?: string }) {
   return (
@@ -94,4 +119,9 @@ export function NumeralArt({ numeral, label, className = "" }: { numeral: string
       </span>
     </div>
   );
+}
+
+/** Soft background glow used behind card grids (the Figma "Background" component). */
+export function Glow({ className = "" }: { className?: string }) {
+  return <div aria-hidden="true" className={`pointer-events-none absolute -z-10 rounded-full blur-[120px] ${className}`} />;
 }

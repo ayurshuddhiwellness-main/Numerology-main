@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { footerLinks, plans, posts, site, testimonial } from "@/content/site";
-import { Button, Container, Eyebrow, Logo, NumeralArt, Sparkle, Title } from "./ui";
+import { PostCard } from "./cards";
+import { Button, Container, Eyebrow, Logo, Sparkle, Title } from "./ui";
 
-/* ---------- Call-to-action banner ---------- */
+/* ---------- Call-to-action banner (most pages) ---------- */
 export function Banner() {
   return (
     <section className="py-10 lg:py-[115px]">
@@ -21,7 +22,7 @@ export function Banner() {
               Get your <em className="italic">numbers</em> explained by Dr. Singh
             </h2>
             <p className="mt-5 text-base text-white lg:text-xl">One-on-one consultations, online or in person</p>
-            <Button href="#consultations" className="mt-8">
+            <Button href="/contact#book" className="mt-8">
               Book a Consultation
             </Button>
           </div>
@@ -31,10 +32,10 @@ export function Banner() {
   );
 }
 
-/* ---------- Pricing ---------- */
+/* ---------- Consultation plans (Home, Services, Forecast pages) ---------- */
 export function Pricing() {
   return (
-    <section id="consultations" className="py-20 lg:py-[115px]">
+    <section id="consultations" className="scroll-mt-28 py-20 lg:py-[115px]">
       <Container className="text-center">
         <Eyebrow>Consultations</Eyebrow>
         <Title>
@@ -61,7 +62,7 @@ export function Pricing() {
                 ))}
               </ul>
               <p className="mt-10 font-display text-6xl font-bold text-gold italic">{p.price}</p>
-              <Button href="#consultations" variant="outline" className="mt-10">
+              <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="outline" className="mt-10">
                 Book Now
               </Button>
             </article>
@@ -72,7 +73,7 @@ export function Pricing() {
   );
 }
 
-/* ---------- Testimonial ---------- */
+/* ---------- Testimonial (Home) ---------- */
 export function Testimonial() {
   return (
     <section className="py-20 lg:py-[115px]">
@@ -94,32 +95,30 @@ export function Testimonial() {
   );
 }
 
-/* ---------- Blog ---------- */
-export function Blog() {
+/* ---------- Two-post blog strip (Home, Blog detail "Other stories") ---------- */
+export function BlogStrip({ excludeSlug, title }: { excludeSlug?: string; title?: React.ReactNode }) {
+  const list = posts.filter((p) => p.slug !== excludeSlug).slice(0, 2);
   return (
     <section id="blog" className="py-20 lg:py-[115px]">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <Eyebrow>Blog</Eyebrow>
+            {!excludeSlug && <Eyebrow>Blog</Eyebrow>}
             <Title>
-              Number <em>Stories</em> from Dr. Singh
+              {title ?? (
+                <>
+                  Number <em>Stories</em> from Dr. Singh
+                </>
+              )}
             </Title>
           </div>
-          <Button href="#blog" variant="outline">
+          <Button href="/blog" variant="outline">
             More Stories
           </Button>
         </div>
         <div className="mt-12 grid gap-10 md:grid-cols-2 lg:mt-16 lg:gap-6">
-          {posts.map((p) => (
-            <article key={p.title}>
-              <NumeralArt numeral={p.numeral} label={`${p.title} cover`} className="h-60 sm:h-80 lg:h-[468px]" />
-              <p className="mt-6 text-base font-semibold text-gold lg:text-[22px]">{p.date}</p>
-              <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-5xl">{p.title}</h3>
-              <Button href={p.href} variant="outline" className="mt-6">
-                Read Article
-              </Button>
-            </article>
+          {list.map((p) => (
+            <PostCard key={p.slug} post={p} />
           ))}
         </div>
       </Container>
@@ -127,7 +126,7 @@ export function Blog() {
   );
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer (every page) ---------- */
 const socialIcons = {
   facebook: <path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6Z" />,
   instagram: (
@@ -139,81 +138,89 @@ const socialIcons = {
   ),
   x: <path d="M4 4h4.6l4 5.6L17.4 4H20l-6.2 7.2L20.5 20h-4.6l-4.3-6-5.1 6H4l6.4-7.4Z" />,
 };
+export const socialIconPaths = socialIcons;
 
 export function Footer() {
   return (
-    <footer className="border-t border-gold/15 pt-16 pb-10 lg:pt-24">
+    <footer className="relative isolate overflow-hidden pt-16 pb-10 lg:pt-24">
+      <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-40 -z-10 h-64 rounded-full bg-maroon-2/60 blur-[100px]" />
       <Container>
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1.3fr_1.2fr_1.6fr]">
-          <div>
-            <Logo />
-            <p className="mt-5 text-base lg:text-xl">{site.footerLine}</p>
-            <div className="mt-6 flex gap-4">
-              {(Object.keys(socialIcons) as (keyof typeof socialIcons)[]).map((k) => (
-                <Link key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-gold">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    {socialIcons[k]}
-                  </svg>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {footerLinks.map((col) => (
-            <div key={col.heading}>
-              <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">{col.heading}</h3>
-              <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <Link href="#" className="hover:text-gold">
-                      {l}
-                    </Link>
-                  </li>
+        <div className="border-t border-gold/15 pt-16 lg:pt-24">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
+            <div>
+              <Logo />
+              <p className="mt-5 text-base lg:text-xl">{site.footerLine}</p>
+              <div className="mt-6 flex gap-4">
+                {(Object.keys(socialIcons) as (keyof typeof socialIcons)[]).map((k) => (
+                  <a key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-gold">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      {socialIcons[k]}
+                    </svg>
+                  </a>
                 ))}
+              </div>
+            </div>
+
+            {footerLinks.map((col) => (
+              <div key={col.heading}>
+                <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">{col.heading}</h3>
+                <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="hover:text-gold">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div>
+              <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">
+                <Link href="/contact" className="hover:text-gold-soft">
+                  Contact Us
+                </Link>
+              </h3>
+              <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
+                <li>
+                  <a href={`mailto:${site.contact.email}`} className="hover:text-gold">
+                    {site.contact.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-gold">
+                    {site.contact.phone}
+                  </a>
+                </li>
+                <li>{site.contact.address}</li>
               </ul>
             </div>
-          ))}
 
-          <div>
-            <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">Contact Us</h3>
-            <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
-              <li>
-                <a href={`mailto:${site.contact.email}`} className="hover:text-gold">
-                  {site.contact.email}
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-gold">
-                  {site.contact.phone}
-                </a>
-              </li>
-              <li>{site.contact.address}</li>
-            </ul>
+            <div>
+              <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">Get weekly number insights</h3>
+              {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
+              <form className="mt-5 flex overflow-hidden rounded-lg border border-cream/30" action="#">
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Your email
+                </label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  required
+                  placeholder="Your Email"
+                  className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:outline-none"
+                />
+                <button type="submit" className="bg-gold px-5 text-base font-medium text-ink hover:bg-gold-soft">
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
-
-          <div>
-            <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">Get weekly number insights</h3>
-            {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
-            <form className="mt-5 flex overflow-hidden rounded-lg border border-cream/30">
-              <label htmlFor="newsletter-email" className="sr-only">
-                Your email
-              </label>
-              <input
-                id="newsletter-email"
-                type="email"
-                required
-                placeholder="Your Email"
-                className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:outline-none"
-              />
-              <button type="submit" className="bg-gold px-5 text-base font-medium text-ink hover:bg-gold-soft">
-                Subscribe
-              </button>
-            </form>
-          </div>
+          <p className="mt-16 border-t border-gold/15 pt-8 text-center text-sm text-cream/70">
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </p>
         </div>
-        <p className="mt-16 border-t border-gold/15 pt-8 text-center text-sm text-cream/70">
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
-        </p>
       </Container>
     </footer>
   );

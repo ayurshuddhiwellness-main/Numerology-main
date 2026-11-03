@@ -53,8 +53,8 @@ export default function Hero() {
           </h1>
           <p className="mt-6 max-w-[620px] text-lg leading-relaxed text-white lg:mt-8 lg:text-xl">{site.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-4 lg:mt-10 lg:gap-5">
-            <Button href="#consultations">Book a Consultation</Button>
-            <Button href="#consultations" variant="outline">
+            <Button href="/contact#book">Book a Consultation</Button>
+            <Button href="/contact?plan=Name%20Analysis#book" variant="outline">
               Free Name Analysis
             </Button>
           </div>
