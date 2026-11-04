@@ -1,4 +1,5 @@
-import { commitments, experts, numbers, reasons, services } from "@/content/site";
+import { services } from "@/content/services";
+import { commitments, experts, numbers, reasons } from "@/content/site";
 import { ExpertCard, NumberCard, ServiceRow } from "./cards";
 import { Button, Container, Eyebrow, Glow, NumeralArt, Title } from "./ui";
 
@@ -72,7 +73,7 @@ export function WhyChooseUs() {
   );
 }
 
-/* ---------- Services preview (Home: first three) ---------- */
+/* ---------- Services preview (Home: the four umbrella services) ---------- */
 export function ServicesPreview() {
   return (
     <section id="services" className="py-20 lg:py-[115px]">
@@ -81,7 +82,7 @@ export function ServicesPreview() {
           <div>
             <Eyebrow>Services</Eyebrow>
             <Title>
-              Our <em>Numerology</em> Services
+              Our <em>Consultation</em> Services
             </Title>
           </div>
           <Button href="/services" variant="outline">
@@ -89,7 +90,7 @@ export function ServicesPreview() {
           </Button>
         </div>
         <div className="mt-14 flex flex-col gap-14 lg:mt-20 lg:gap-24">
-          {services.slice(0, 3).map((s, i) => (
+          {services.map((s, i) => (
             <ServiceRow key={s.slug} service={s} index={i} showButton={false} />
           ))}
         </div>

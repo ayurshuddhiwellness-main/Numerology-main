@@ -1,10 +1,25 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { footerLinks, plans, posts, site, testimonial } from "@/content/site";
 import { PostCard } from "./cards";
 import { Button, Container, Eyebrow, Logo, Sparkle, Title } from "./ui";
 
 /* ---------- Call-to-action banner (most pages) ---------- */
-export function Banner() {
+export function Banner({
+  heading = (
+    <>
+      Get your <em className="italic">numbers</em> explained by Dr. Singh
+    </>
+  ),
+  text = "One-on-one consultations, online or in person",
+  href = "/contact#book",
+  cta = "Book a Consultation",
+}: {
+  heading?: ReactNode;
+  text?: string;
+  href?: string;
+  cta?: string;
+}) {
   return (
     <section className="py-10 lg:py-[115px]">
       <Container>
@@ -19,11 +34,11 @@ export function Banner() {
           </div>
           <div className="relative px-7 py-12 md:py-16 md:pr-14 lg:py-24">
             <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[64px]">
-              Get your <em className="italic">numbers</em> explained by Dr. Singh
+              {heading}
             </h2>
-            <p className="mt-5 text-base text-white lg:text-xl">One-on-one consultations, online or in person</p>
-            <Button href="/contact#book" className="mt-8">
-              Book a Consultation
+            <p className="mt-5 text-base text-white lg:text-xl">{text}</p>
+            <Button href={href} className="mt-8">
+              {cta}
             </Button>
           </div>
         </div>

@@ -6,7 +6,8 @@ import "@fontsource/montserrat/600.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Sections2";
-import { site } from "@/content/site";
+import { serviceMenu } from "@/content/services";
+import { nav, site } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <Navbar />
+        <Navbar nav={nav} menu={serviceMenu} />
         <main id="main">{children}</main>
         <Footer />
       </body>

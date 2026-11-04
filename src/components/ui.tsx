@@ -19,7 +19,7 @@ export function Button({ href, children, variant = "filled", className = "" }: B
 
 export function buttonClass(variant: "filled" | "outline" = "filled") {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer";
+    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer";
   return variant === "filled"
     ? `${base} bg-gold text-ink hover:bg-gold-soft`
     : `${base} border border-gold text-gold hover:bg-gold hover:text-ink`;
@@ -51,7 +51,7 @@ export function PageHeader({ title, numeral, label }: { title: ReactNode; numera
   return (
     <section className="pt-28 lg:pt-[220px]">
       <Container>
-        <h1 className="text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(88px,7.3vw,140px)]">
+        <h1 className="rise text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(88px,7.3vw,140px)]">
           {title}
         </h1>
         <NumeralArt
@@ -93,7 +93,7 @@ export function Logo() {
 /** Four-point sparkle used as decoration. */
 export function Sparkle({ className = "", style }: { className?: string; style?: CSSProperties }) {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" className={className} style={style}>
+    <svg viewBox="0 0 32 32" aria-hidden="true" className={`twinkle ${className}`} style={style}>
       <path d="M16 0C17 9 23 15 32 16C23 17 17 23 16 32C15 23 9 17 0 16C9 15 15 9 16 0Z" fill="currentColor" />
     </svg>
   );

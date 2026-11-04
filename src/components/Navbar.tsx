@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav } from "@/content/site";
+import type { serviceMenu } from "@/content/services";
 import { Button, Container, Logo } from "./ui";
+
+type NavItem = { label: string; href: string; mega?: boolean };
+type Props = { nav: NavItem[]; menu: typeof serviceMenu };
 
 function isActive(pathname: string, href: string) {
   const path = href.split("#")[0];
@@ -12,34 +15,49 @@ function isActive(pathname: string, href: string) {
   return pathname === path || pathname.startsWith(path + "/");
 }
 
-export default function Navbar() {
+export default function Navbar({ nav, menu }: Props) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const servicesRef = useRef<HTMLLIElement>(null);
+  const [open, setOpen] = useState(false); // mobile drawer
+  const [megaOpen, setMegaOpen] = useState(false); // desktop Services mega-menu
+  const megaRef = useRef<HTMLLIElement>(null);
+  const caretRef = useRef<HTMLButtonElement>(null);
+  const closeTimer = useRef<number | undefined>(undefined);
 
   // Close menus when the page changes (adjusting state during render, per React docs)
   const [lastPath, setLastPath] = useState(pathname);
   if (pathname !== lastPath) {
     setLastPath(pathname);
     setOpen(false);
-    setServicesOpen(false);
+    setMegaOpen(false);
   }
 
-  // Close the Services dropdown on outside click or Escape
+  // Escape closes whatever is open; outside click closes the mega-menu
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!open && !megaOpen) return;
     const onClick = (e: MouseEvent) => {
-      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false);
+      if (!megaRef.current?.contains(e.target as Node)) setMegaOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setServicesOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (megaOpen) caretRef.current?.focus();
+      setMegaOpen(false);
+      setOpen(false);
+    };
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [servicesOpen]);
+  }, [open, megaOpen]);
+
+  // Hover opens the mega-menu for a mouse only (touch uses the caret); a short delay bridges the gap to the panel
+  const hover = (e: React.PointerEvent, on: boolean) => {
+    if (e.pointerType !== "mouse") return;
+    window.clearTimeout(closeTimer.current);
+    if (on) setMegaOpen(true);
+    else closeTimer.current = window.setTimeout(() => setMegaOpen(false), 150);
+  };
 
   return (
     <header className="absolute inset-x-0 top-0 z-30">
@@ -49,14 +67,8 @@ export default function Navbar() {
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-12 text-lg text-white lg:text-xl">
             {nav.map((item) =>
-              item.children ? (
-                <li
-                  key={item.label}
-                  ref={servicesRef}
-                  className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
+              item.mega ? (
+                <li key={item.label} ref={megaRef} onPointerEnter={(e) => hover(e, true)} onPointerLeave={(e) => hover(e, false)}>
                   <div className="flex items-center gap-2">
                     <Link
                       href={item.href}
@@ -65,33 +77,58 @@ export default function Navbar() {
                       {item.label}
                     </Link>
                     <button
+                      ref={caretRef}
                       type="button"
                       aria-label="Show services"
-                      aria-expanded={servicesOpen}
-                      onClick={() => setServicesOpen((v) => !v)}
-                      className="flex h-6 w-6 items-center justify-center hover:text-gold"
+                      aria-expanded={megaOpen}
+                      aria-controls="services-menu"
+                      // A mouse already opened it on hover, so a click keeps it open; keyboard and touch toggle
+                      onClick={(e) => setMegaOpen((e.nativeEvent as PointerEvent).pointerType === "mouse" || ((v) => !v))}
+                      className="flex h-11 w-6 items-center justify-center hover:text-gold"
                     >
                       <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
                         <path d="M1 3l4 4 4-4" fill="currentColor" />
                       </svg>
                     </button>
                   </div>
-                  {servicesOpen && (
-                    <div className="absolute top-full left-1/2 w-80 -translate-x-1/2 pt-4">
-                      <ul className="rounded-2xl border border-gold/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
-                        {item.children.map((c) => (
-                          <li key={c.href}>
-                            <Link
-                              href={c.href}
-                              className={`block rounded-lg px-4 py-3 text-base transition-colors hover:bg-maroon/40 hover:text-gold ${
-                                pathname === c.href ? "text-gold" : ""
-                              }`}
-                            >
-                              {c.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                  {megaOpen && (
+                    // Not inside a positioned parent on purpose: it spans the header width
+                    <div id="services-menu" className="absolute inset-x-0 top-full">
+                      <Container>
+                        <div className="grid grid-cols-4 gap-8 rounded-2xl border border-gold/25 bg-ink/95 p-8 text-base shadow-2xl backdrop-blur">
+                          {menu.map((s) => (
+                            <div key={s.slug}>
+                              <Link
+                                href={`/services/${s.slug}`}
+                                onClick={() => setMegaOpen(false)}
+                                className="font-display text-2xl font-bold text-gold hover:text-gold-soft"
+                              >
+                                {s.title}
+                              </Link>
+                              <ul className="mt-3">
+                                {s.featured.map((t) => (
+                                  <li key={t.id}>
+                                    <Link
+                                      href={`/services/${s.slug}#${t.id}`}
+                                      onClick={() => setMegaOpen(false)}
+                                      className="block py-2 text-cream hover:text-gold"
+                                    >
+                                      {t.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                              <Link
+                                href={`/services/${s.slug}`}
+                                onClick={() => setMegaOpen(false)}
+                                className="mt-2 inline-block py-2 text-sm font-semibold text-gold hover:text-gold-soft"
+                              >
+                                View all {s.count} topics →
+                              </Link>
+                            </div>
+                          ))}
+                        </div>
+                      </Container>
                     </div>
                   )}
                 </li>
@@ -131,20 +168,24 @@ export default function Navbar() {
       </Container>
 
       {open && (
-        <div id="mobile-menu" className="border-y border-gold/20 bg-ink/95 backdrop-blur xl:hidden">
-          <Container className="py-4">
+        <div id="mobile-menu" className="fixed inset-x-0 top-24 bottom-0 z-30 flex flex-col border-t border-gold/20 bg-ink/95 backdrop-blur xl:hidden">
+          <Container className="flex-1 overflow-y-auto py-4">
             <ul className="flex flex-col">
               {nav.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="block py-3 text-lg text-white hover:text-gold">
+                  <Link href={item.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-white hover:text-gold">
                     {item.label}
                   </Link>
-                  {item.children && (
+                  {item.mega && (
                     <ul className="mb-2 border-l border-gold/25 pl-4">
-                      {item.children.map((c) => (
-                        <li key={c.href}>
-                          <Link href={c.href} className="block py-2 text-base text-cream hover:text-gold">
-                            {c.label}
+                      {menu.map((s) => (
+                        <li key={s.slug}>
+                          <Link
+                            href={`/services/${s.slug}`}
+                            onClick={() => setOpen(false)}
+                            className="block py-3 text-base text-cream hover:text-gold"
+                          >
+                            {s.title}
                           </Link>
                         </li>
                       ))}
@@ -153,10 +194,14 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
-            <Button href="/contact#book" className="mt-3 w-full">
-              Book Now
-            </Button>
           </Container>
+          <div className="shrink-0 border-t border-gold/20 bg-ink">
+            <Container className="py-4">
+              <Button href="/contact#book" className="w-full">
+                Book Now
+              </Button>
+            </Container>
+          </div>
         </div>
       )}
     </header>

@@ -37,6 +37,124 @@ body {
   border-radius: 20px;
 }
 
+/* Hover transitions are harmless when motion is reduced (colour/border only) */
+.glass-card {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/*
+  Motion. Everything animates transform/opacity only, and only when the visitor
+  has not asked for reduced motion (those visitors see the static page).
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+  }
+
+  /* Page load: inner-page titles, then the hero text one line at a time */
+  .rise,
+  .rise-group > * {
+    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  }
+  .rise-group > :nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .rise-group > :nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  /* Hero portrait fades in; the glow and gold ring breathe */
+  .hero-photo > :nth-child(3) {
+    animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s backwards;
+  }
+  .hero-photo > :nth-child(1),
+  .hero-photo > :nth-child(2) {
+    animation: breathe 7s ease-in-out infinite;
+  }
+  .hero-photo > :nth-child(2) {
+    animation-delay: -3.5s;
+  }
+
+  /* Stars: dots in the hero and sparkles anywhere */
+  .twinkle,
+  .stars > span {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  .twinkle:nth-child(odd),
+  .stars > :nth-child(odd) {
+    animation-delay: -1.5s;
+    animation-duration: 5s;
+  }
+  .stars > :nth-child(3n) {
+    animation-delay: -3s;
+  }
+
+  /* Menus */
+  #services-menu,
+  #mobile-menu {
+    animation: pop 0.2s ease-out;
+  }
+
+  /* "Show all" list fades in */
+  details[open] > :not(summary) {
+    animation: fade 0.3s ease-out;
+  }
+
+  /* Cards that are links or list items lift on hover */
+  a.glass-card:hover,
+  li.glass-card:hover {
+    transform: translateY(-0.25rem);
+  }
+
+  /* Scroll reveal, driven by the scroll position (no JavaScript). Browsers
+     without animation-timeline simply show the content. */
+  @supports (animation-timeline: view()) {
+    main section :is(h2, article, .glass-card, [role="img"]) {
+      animation: rise linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

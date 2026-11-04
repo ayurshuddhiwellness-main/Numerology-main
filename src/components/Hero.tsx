@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="absolute top-[40%] left-[25%] h-[22%] w-[60%] rounded-full bg-gradient-to-r from-gold/25 to-maroon-2/30 blur-[90px]" />
       </div>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden md:block">
+      <div aria-hidden="true" className="stars pointer-events-none absolute inset-0 -z-10 hidden md:block">
         {stars.map((st, i) =>
           st.t === "sparkle" ? (
             <Sparkle
@@ -46,7 +46,7 @@ export default function Hero() {
 
       <Container className="grid items-end gap-6 lg:min-h-[790px] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
         {/* Right on desktop: headline block. Shown first on mobile so the message leads. */}
-        <div className="pt-10 lg:order-2 lg:self-center lg:pt-0 lg:pb-10">
+        <div className="rise-group pt-10 lg:order-2 lg:self-center lg:pt-0 lg:pb-10">
           <h1 className="font-display text-[44px] leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(72px,6.6vw,127px)]">
             Your Life, Written <br className="hidden sm:block" />
             in <em className="italic">Numbers</em>
@@ -61,7 +61,7 @@ export default function Hero() {
         </div>
 
         {/* Left on desktop: Dr. Singh with gold glow and seal ring */}
-        <div className="relative mx-auto flex w-full max-w-[520px] justify-center lg:order-1 lg:max-w-none">
+        <div className="hero-photo relative mx-auto flex w-full max-w-[520px] justify-center lg:order-1 lg:max-w-none">
           <div
             aria-hidden="true"
             className="absolute top-[4%] left-1/2 aspect-square w-[min(110%,760px)] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(214,175,84,0.55)_0%,rgba(214,175,84,0)_68%)]"

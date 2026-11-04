@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graphify
+graphify-out/
+
+CLAUDE.md 
+AUDIT.md
+
+content-source/

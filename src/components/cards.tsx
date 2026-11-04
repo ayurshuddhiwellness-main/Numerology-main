@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { NumberForecast, Post, Service } from "@/content/site";
+import type { Service } from "@/content/services";
+import type { NumberForecast, Post } from "@/content/site";
 import { Button, NumeralArt } from "./ui";
 
 /* Card components reused across the homepage and inner pages. */
@@ -16,14 +17,14 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
             {service.title}
           </Link>
         </h3>
-        <p className="mt-4 max-w-[560px] text-base leading-relaxed lg:text-xl">{service.summary}</p>
+        <p className="mt-4 max-w-[560px] text-base leading-relaxed lg:text-xl">{service.intro}</p>
         {showButton && (
           <Button href={`/services/${service.slug}`} variant="outline" className="mt-6">
             More Detail
           </Button>
         )}
       </div>
-      <NumeralArt numeral={service.numeral} label={`${service.title} artwork`} className="h-56 sm:h-72 lg:h-[300px]" />
+      <NumeralArt numeral={String(index + 1)} label={`${service.title} artwork`} className="h-56 sm:h-72 lg:h-[300px]" />
     </article>
   );
 }
