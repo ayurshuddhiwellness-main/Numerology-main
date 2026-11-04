@@ -76,13 +76,16 @@ export function Pricing() {
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <p className="mt-10 gold-text font-display text-6xl font-bold italic">{p.price}</p>
-              <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="book" className="mt-10">
-                Book Now
+              <p className="mt-10 text-base text-sky-soft lg:text-xl">Contact for pricing</p>
+              <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="outline" className="mt-8">
+                Enquire
               </Button>
             </article>
           ))}
         </div>
+        <Button href="/consultations" variant="outline" className="mt-12 lg:mt-16">
+          View All Consultations
+        </Button>
       </Container>
     </section>
   );

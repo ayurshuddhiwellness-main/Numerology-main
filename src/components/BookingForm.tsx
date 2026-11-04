@@ -14,7 +14,8 @@ import { buttonClass } from "./ui";
 */
 
 const NOT_SURE = "Not sure, help me choose";
-const planOptions = plans.map((p) => `${p.name} (${p.price})`);
+const SOMETHING_ELSE = "Something else";
+const planOptions = plans.map((p) => p.name);
 const options = [...services.map((s) => s.title), ...programs, ...planOptions];
 
 const field =
@@ -42,8 +43,9 @@ export default function BookingForm({ defaultService = "" }: { defaultService?: 
       `Email: ${d.get("email")}`,
       `Service: ${d.get("service")}`,
       ...(d.has("topic") ? [`Topic: ${d.get("topic") || NOT_SURE}`] : []),
+      ...(d.get("message") ? ["", `Message: ${d.get("message")}`] : []),
     ].join("\n");
-    const subject = `Consultation request: ${d.get("service")}`;
+    const subject = d.get("service") === SOMETHING_ELSE ? "Enquiry from the website" : `Consultation request: ${d.get("service")}`;
     window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }
@@ -67,7 +69,7 @@ export default function BookingForm({ defaultService = "" }: { defaultService?: 
         <input name="email" type="email" required autoComplete="email" className={field} />
       </label>
       <label className="block sm:col-span-2">
-        <span className={labelCls}>Choose Service</span>
+        <span className={labelCls}>How can we help?</span>
         <select
           name="service"
           required
@@ -102,6 +104,10 @@ export default function BookingForm({ defaultService = "" }: { defaultService?: 
               </option>
             ))}
           </optgroup>
+          <optgroup label="Other">
+            <option value={NOT_SURE}>{NOT_SURE}</option>
+            <option value={SOMETHING_ELSE}>{SOMETHING_ELSE}</option>
+          </optgroup>
         </select>
       </label>
       {topics && (
@@ -117,6 +123,23 @@ export default function BookingForm({ defaultService = "" }: { defaultService?: 
           </select>
         </label>
       )}
+      <label className="block sm:col-span-2">
+        <span className={labelCls}>
+          Message{" "}
+          {service !== SOMETHING_ELSE && <span className="text-base font-medium text-cream/70">(optional)</span>}
+        </span>
+        <textarea
+          name="message"
+          rows={4}
+          required={service === SOMETHING_ELSE}
+          placeholder={
+            service === SOMETHING_ELSE
+              ? "Tell us what you'd like to get in touch about"
+              : "Anything you'd like Dr. Singh to know before your consultation"
+          }
+          className={`${field} resize-y`}
+        />
+      </label>
       <div className="flex flex-wrap items-center justify-end gap-4 sm:col-span-2">
         {sent && (
           <p role="status" className="text-base text-sky-soft">

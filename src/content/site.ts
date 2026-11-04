@@ -256,25 +256,23 @@ export const experts = [
 
 /* ---------------- Consultations ---------------- */
 
-// TODO: confirm prices with Dr. Singh
+// Prices are not final, so none are shown: every plan is "on enquiry".
+// TODO: add a `price` to each plan once Dr. Singh confirms them.
 export const plans = [
   {
     name: "Name Analysis",
     tier: "Quick Reading",
-    price: "₹1,100",
     features: ["Analysis of your name and its number", "Your lucky numbers, colours and days", "Written report on WhatsApp or email"],
   },
   {
     name: "Personal Report",
     tier: "Most Chosen",
-    price: "₹2,100",
     popular: true,
     features: ["Everything in Name Analysis", "Full birth date and name reading", "30-minute call with Dr. Singh"],
   },
   {
     name: "Complete Guidance",
     tier: "Premium Consultation",
-    price: "₹5,100",
     features: ["Everything in Personal Report", "Name correction and signature advice", "A follow-up session within 3 months"],
   },
 ];
