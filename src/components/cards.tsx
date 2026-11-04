@@ -35,11 +35,11 @@ export function NumberCard({ n }: { n: NumberForecast }) {
     <li>
       <Link
         href={`/forecast/${n.number}`}
-        className="glass-card flex h-full flex-col items-center px-7 py-10 text-center transition-colors hover:border-sky/60"
+        className="glass-card flex h-full flex-col items-center px-7 py-10 text-center"
       >
         <span
           aria-hidden="true"
-          className="flex h-20 w-20 items-center justify-center rounded-full border border-sky/50 bg-sky/5 font-display text-5xl leading-none font-bold text-sky italic"
+          className="relative flex h-20 w-20 items-center justify-center rounded-full border border-sky/50 gold-edge edge-b-1 bg-sky/5 font-display text-5xl leading-none font-bold text-sky italic"
         >
           {n.number}
         </span>

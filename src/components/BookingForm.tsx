@@ -18,7 +18,7 @@ const planOptions = plans.map((p) => `${p.name} (${p.price})`);
 const options = [...services.map((s) => s.title), ...programs, ...planOptions];
 
 const field =
-  "mt-2 w-full rounded-lg border border-cream/30 bg-white px-4 py-3 text-base text-ink placeholder:text-ink/70 focus:border-sky focus:outline-2 focus:outline-sky";
+  "mt-2 w-full rounded-lg border border-cream/30 hover:border-gold bg-white px-4 py-3 text-base text-ink placeholder:text-ink/70 focus:border-gold focus:outline-2 focus:outline-gold";
 const labelCls = "text-base font-semibold text-white lg:text-[22px]";
 
 export default function BookingForm({ defaultService = "" }: { defaultService?: string }) {

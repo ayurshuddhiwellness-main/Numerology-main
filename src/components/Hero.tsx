@@ -49,7 +49,9 @@ export default function Hero() {
           </h1>
           <p className="mt-6 max-w-[620px] text-lg leading-relaxed text-white lg:mt-8 lg:text-xl">{site.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-4 lg:mt-10 lg:gap-5">
-            <Button href="/contact#book">Book a Consultation</Button>
+            <Button href="/contact#book" variant="book">
+              Book a Consultation
+            </Button>
             <Button href="/contact?plan=Name%20Analysis#book" variant="outline">
               Free Name Analysis
             </Button>
@@ -64,7 +66,7 @@ export default function Hero() {
           />
           <div
             aria-hidden="true"
-            className="absolute top-[11%] left-1/2 aspect-square w-[min(92%,640px)] -translate-x-1/2 rounded-full border-2 border-sky/60"
+            className="absolute top-[11%] left-1/2 aspect-square w-[min(92%,640px)] -translate-x-1/2 rounded-full border-2 border-sky/60 gold-edge edge-w-2 edge-b-2"
           />
           <Image
             src="/images/dr-abbhiraath-singh.webp"

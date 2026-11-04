@@ -50,8 +50,8 @@ export default async function NumberForecastPage({ params }: Props) {
                     >
                       <span
                         aria-hidden="true"
-                        className={`flex h-12 w-12 items-center justify-center rounded-full border text-2xl italic ${
-                          active ? "border-sky bg-sky/10" : "border-sky/40"
+                        className={`relative flex h-12 w-12 items-center justify-center rounded-full border gold-edge edge-b-1 text-2xl italic ${
+                          active ? "border-sky gold-edge-full bg-sky/10" : "border-sky/40"
                         }`}
                       >
                         {x.number}

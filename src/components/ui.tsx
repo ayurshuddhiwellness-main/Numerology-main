@@ -7,7 +7,9 @@ export function Container({ children, className = "" }: { children: ReactNode; c
   return <div className={`mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12 ${className}`}>{children}</div>;
 }
 
-type ButtonProps = { href: string; children: ReactNode; variant?: "filled" | "outline"; className?: string };
+/** "book" is the gold call-to-action used by every Book button. */
+type ButtonVariant = "filled" | "outline" | "book";
+type ButtonProps = { href: string; children: ReactNode; variant?: ButtonVariant; className?: string };
 
 export function Button({ href, children, variant = "filled", className = "" }: ButtonProps) {
   return (
@@ -17,12 +19,13 @@ export function Button({ href, children, variant = "filled", className = "" }: B
   );
 }
 
-export function buttonClass(variant: "filled" | "outline" = "filled") {
+export function buttonClass(variant: ButtonVariant = "filled") {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky cursor-pointer";
+    "relative inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-reduce:transition-none motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer gold-edge";
+  if (variant === "book") return `${base} gold-fill text-ink hover:shadow-gold-glow`;
   return variant === "filled"
-    ? `${base} bg-sky text-ink hover:bg-sky-soft`
-    : `${base} border-2 border-sky text-sky hover:bg-sky hover:text-ink`;
+    ? `${base} bg-sky text-ink hover:bg-sky-soft hover:shadow-gold-glow`
+    : `${base} border-2 border-sky edge-w-2 edge-b-2 text-sky hover:bg-gold-soft/10`;
 }
 
 /** Small sky label above section titles, e.g. "SERVICES". */
@@ -83,9 +86,9 @@ export function SwastikSeal({ size = 41, className = "" }: { size?: number; clas
 
 export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-3 text-sky" aria-label="Dr. Abbhiraath Singh, home">
-      <SwastikSeal size={41} />
-      <span className="font-display text-2xl font-bold whitespace-nowrap lg:text-[26px]">Dr. Abbhiraath Singh</span>
+    <Link href="/" className="flex items-center gap-3" aria-label="Dr. Abbhiraath Singh, home">
+      <SwastikSeal size={41} className="text-gold" />
+      <span className="gold-text font-display text-2xl font-bold whitespace-nowrap lg:text-[26px]">Dr. Abbhiraath Singh</span>
     </Link>
   );
 }
@@ -109,7 +112,7 @@ export function NumeralArt({ numeral, label, className = "" }: { numeral: string
     <div
       role="img"
       aria-label={label}
-      className={`relative overflow-hidden rounded-[20px] border border-sky/25 bg-[radial-gradient(circle_at_30%_30%,var(--color-azure)_0%,color-mix(in_srgb,var(--color-azure)_30%,var(--color-ink))_45%,var(--color-ink)_100%)] ${className}`}
+      className={`relative overflow-hidden rounded-[20px] border border-sky/25 gold-edge bg-[radial-gradient(circle_at_30%_30%,var(--color-azure)_0%,color-mix(in_srgb,var(--color-azure)_30%,var(--color-ink))_45%,var(--color-ink)_100%)] ${className}`}
     >
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="aspect-square h-[78%] rounded-full border border-sky/30" />

@@ -137,7 +137,9 @@ export default function FigmaGlow({
           backgroundImage: `radial-gradient(ellipse 90% 35% at 50% ${variant === "hero" ? "68%" : "50%"}, color-mix(in srgb, var(--color-azure) 55%, transparent), transparent)`,
         }}
       />
-      <div className="absolute inset-0 hidden lg:block">
+      <div
+        className={`absolute inset-0 hidden lg:block ${variant === "hero" ? "" : "opacity-60"}`}
+      >
         {variants[variant].map((s) => {
           const [h, w] = s.size ?? ["100cqh", "100cqw"];
           const inner: CSSProperties = {

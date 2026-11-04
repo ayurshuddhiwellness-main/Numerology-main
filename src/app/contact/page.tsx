@@ -53,7 +53,7 @@ export default function ContactPage() {
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.contact.mapQuery)}&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="mt-12 h-[360px] w-full rounded-[20px] border border-sky/25 lg:mt-16 lg:h-[579px]"
+              className="mt-12 h-[360px] w-full rounded-[20px] border border-sky/25 hover:border-gold lg:mt-16 lg:h-[579px]"
             />
           ) : (
             // TODO: set site.contact.mapQuery to show the live map

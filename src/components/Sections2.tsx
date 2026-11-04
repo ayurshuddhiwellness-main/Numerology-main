@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { footerLinks, plans, posts, site, testimonial } from "@/content/site";
 import { PostCard } from "./cards";
-import { Button, Container, Eyebrow, Logo, Sparkle, Title } from "./ui";
+import { Button, buttonClass, Container, Eyebrow, Logo, Sparkle, Title } from "./ui";
 
 /* ---------- Call-to-action banner (most pages) ---------- */
 export function Banner({
@@ -23,7 +23,7 @@ export function Banner({
   return (
     <section className="py-10 lg:py-[115px]">
       <Container>
-        <div className="relative isolate grid overflow-hidden rounded-[24px] border border-sky/20 bg-azure bg-[radial-gradient(ellipse_at_30%_45%,color-mix(in_srgb,var(--color-sky)_35%,transparent),transparent_65%),linear-gradient(to_bottom_right,transparent,color-mix(in_srgb,var(--color-ink)_60%,transparent))] md:grid-cols-2">
+        <div className="relative isolate grid overflow-hidden rounded-[24px] border border-sky/20 gold-edge hover:shadow-gold-glow bg-azure bg-[radial-gradient(ellipse_at_30%_45%,color-mix(in_srgb,var(--color-sky)_35%,transparent),transparent_65%),linear-gradient(to_bottom_right,transparent,color-mix(in_srgb,var(--color-ink)_60%,transparent))] md:grid-cols-2">
           <div aria-hidden="true" className="relative hidden min-h-[320px] md:block">
             <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-sky-soft/40" />
             <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-sky-soft/70" />
@@ -37,7 +37,7 @@ export function Banner({
               {heading}
             </h2>
             <p className="mt-5 text-base text-white lg:text-xl">{text}</p>
-            <Button href={href} className="mt-8">
+            <Button href={href} variant={href.includes("#book") ? "book" : "filled"} className="mt-8">
               {cta}
             </Button>
           </div>
@@ -65,7 +65,7 @@ export function Pricing() {
               }`}
             >
               {p.popular && (
-                <span className="absolute top-0 right-6 rounded-b-lg bg-sky px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
+                <span className="absolute top-0 right-6 rounded-b-lg gold-edge bg-sky px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
                   Popular
                 </span>
               )}
@@ -77,7 +77,7 @@ export function Pricing() {
                 ))}
               </ul>
               <p className="mt-10 font-display text-6xl font-bold text-sky italic">{p.price}</p>
-              <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="outline" className="mt-10">
+              <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="book" className="mt-10">
                 Book Now
               </Button>
             </article>
@@ -160,7 +160,7 @@ export function Footer() {
     <footer className="relative isolate overflow-hidden pt-16 pb-10 lg:pt-24">
       <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-40 -z-10 h-64 rounded-full bg-azure/60 blur-[100px]" />
       <Container>
-        <div className="border-t border-sky/15 pt-16 lg:pt-24">
+        <div className="fade-rule pt-16 lg:pt-24">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
             <div>
               <Logo />
@@ -215,7 +215,7 @@ export function Footer() {
             <div>
               <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">Get weekly number insights</h3>
               {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
-              <form className="mt-5 flex overflow-hidden rounded-lg border border-cream/30" action="#">
+              <form className="mt-5 flex gap-3" action="#">
                 <label htmlFor="newsletter-email" className="sr-only">
                   Your email
                 </label>
@@ -224,15 +224,15 @@ export function Footer() {
                   type="email"
                   required
                   placeholder="Your Email"
-                  className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:outline-none"
+                  className="min-w-0 flex-1 rounded-lg border border-cream/30 hover:border-gold bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:border-gold focus:outline-2 focus:outline-gold"
                 />
-                <button type="submit" className="bg-sky px-5 text-base font-medium text-ink hover:bg-sky-soft">
+                <button type="submit" className={buttonClass("filled")}>
                   Subscribe
                 </button>
               </form>
             </div>
           </div>
-          <p className="mt-16 border-t border-sky/15 pt-8 text-center text-sm text-cream/70">
+          <p className="mt-16 fade-rule pt-8 text-center text-sm text-cream/70">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
         </div>

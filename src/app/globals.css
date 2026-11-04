@@ -12,6 +12,12 @@
   --color-sky-soft: #d4eaff;   /* glow highlight and hover (Gradient/2) */
   --color-cream: #ccd6f6;      /* body text (Solid Color/5) */
 
+  /* Gold is an edge accent only: hairlines, rings, underlines, glows. Never a fill or text colour. */
+  --color-gold: #d6af54;
+  --color-gold-deep: #b8863b;
+  --color-gold-soft: #f3e3bc;
+  --shadow-gold-glow: 0 0 24px color-mix(in srgb, var(--color-gold) 25%, transparent);
+
   --font-display: "Cormorant", Georgia, serif;
   --font-sans: "Montserrat", system-ui, sans-serif;
 
@@ -29,8 +35,9 @@ body {
   font-weight: 500;
 }
 
-/* Soft card used by Why Choose Us, Forecast and Pricing */
+/* Soft card used by Why Choose Us, Forecast and Pricing. Gold appears only on hover (see .gold-edge). */
 .glass-card {
+  position: relative;
   /* Mobile cards in Figma: blue fade with a faint sky border */
   background: linear-gradient(
     180deg,
@@ -41,12 +48,122 @@ body {
   border-radius: 20px;
 }
 
-/* Desktop cards in Figma: faint grey tint with a white border */
+/* Desktop cards in Figma: faint grey tint and a white border. The darker veil keeps text readable over the
+   bright centre of the background glow (the design hides it with a 50px backdrop blur). */
 @media (min-width: 64rem) {
   .glass-card {
-    background: color-mix(in srgb, var(--color-cream) 5%, transparent);
     border-color: white;
+    background-color: color-mix(in srgb, var(--color-cream) 5%, transparent);
+    background-image: linear-gradient(
+      color-mix(in srgb, var(--color-ink) 55%, transparent),
+      color-mix(in srgb, var(--color-ink) 55%, transparent)
+    );
   }
+}
+
+/*
+  Gold edge: invisible at rest, it lights up on hover (or when the element is selected:
+  aria-current / aria-expanded, or the .gold-edge-full modifier). A 1px gradient hairline drawn by ::before and cut out with a mask, so it
+  works on transparent, glass and gradient surfaces alike. The element must be positioned
+  (glass-card already is). --edge is the strength, --edge-w the thickness, --edge-bw the
+  element's own transparent border width, so the line lands exactly where the border was.
+  Elements with overflow:hidden keep --edge-bw at 0 (the line sits inside their box).
+*/
+.gold-edge,
+.glass-card {
+  --edge: 0;
+  --edge-w: 1px;
+  --edge-bw: 0px;
+}
+.glass-card {
+  --edge-bw: 1px;
+}
+.gold-edge-full {
+  --edge: 1;
+}
+.edge-w-2 {
+  --edge-w: 2px;
+}
+.edge-b-1 {
+  --edge-bw: 1px;
+}
+.edge-b-2 {
+  --edge-bw: 2px;
+}
+.gold-edge::before,
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--edge-bw) * -1);
+  padding: var(--edge-w);
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--color-gold-soft), var(--color-gold), var(--color-gold-deep));
+  opacity: var(--edge);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+.gold-edge:hover,
+.glass-card:hover,
+.gold-edge[aria-expanded="true"],
+.gold-edge[aria-current="page"],
+.gold-edge[aria-current="location"],
+.hero-photo:hover > .gold-edge {
+  --edge: 1;
+}
+a.glass-card:hover {
+  box-shadow: var(--shadow-gold-glow);
+}
+
+/* Gold gradient lettering, used for the logo name */
+.gold-text {
+  background: linear-gradient(135deg, var(--color-gold-soft), var(--color-gold), var(--color-gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gold call-to-action fill (Book buttons). Ink text on it is 5.7:1 or better. */
+.gold-fill {
+  background: linear-gradient(135deg, var(--color-gold-soft), var(--color-gold) 55%, var(--color-gold-deep));
+}
+.gold-fill:hover {
+  filter: brightness(1.08);
+}
+
+/* Section dividers: a soft blue line that fades out at both ends */
+.fade-rule {
+  border-top: 1px solid;
+  border-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-sky) 30%, transparent),
+      transparent
+    )
+    1;
+}
+
+/* Navbar link marker: 2px gold underline, 60% wide, centred */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset: auto 20% -0.5rem;
+  height: 2px;
+  background: var(--color-gold);
+  opacity: 0;
+}
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
+  opacity: 1;
 }
 
 /*
@@ -74,11 +191,22 @@ body {
   }
 }
 
-/* Hover transitions are harmless when motion is reduced (colour/border only) */
-.glass-card {
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+/* Edge, glow and underline fades, 200ms, off when motion is reduced */
+@media (prefers-reduced-motion: no-preference) {
+  .glass-card {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.2s ease;
+  }
+  .gold-edge::before,
+  .glass-card::before {
+    transition:
+      opacity 0.2s ease,
+      filter 0.2s ease;
+  }
+  .nav-link::after {
+    transition: opacity 0.2s ease;
+  }
 }
 
 /*

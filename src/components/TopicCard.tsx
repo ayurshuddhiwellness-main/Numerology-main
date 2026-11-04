@@ -12,7 +12,7 @@ export function TopicCard({ topic, serviceSlug }: { topic: Topic; serviceSlug: s
       {topic.disclaimer && (
         <p className="mt-6 border-l-2 border-sky/50 pl-4 text-sm leading-relaxed italic lg:text-base">{topic.disclaimer}</p>
       )}
-      <Button href={`/contact?service=${serviceSlug}&topic=${topic.id}#book`} variant="outline" className="mt-6">
+      <Button href={`/contact?service=${serviceSlug}&topic=${topic.id}#book`} variant="book" className="mt-6">
         Book this topic
       </Button>
     </article>

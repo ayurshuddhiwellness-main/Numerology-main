@@ -72,7 +72,8 @@ export default function Navbar({ nav, menu }: Props) {
                   <div className="flex items-center gap-2">
                     <Link
                       href={item.href}
-                      className={`transition-colors hover:text-sky ${isActive(pathname, item.href) ? "text-sky" : ""}`}
+                      data-active={isActive(pathname, item.href)}
+                      className={`nav-link transition-colors hover:text-sky ${isActive(pathname, item.href) ? "text-sky" : ""}`}
                     >
                       {item.label}
                     </Link>
@@ -93,7 +94,7 @@ export default function Navbar({ nav, menu }: Props) {
                   </div>
                   {servicesOpen && (
                     <div id="services-menu" className="absolute top-full left-1/2 w-80 -translate-x-1/2 pt-4">
-                      <ul className="rounded-2xl border border-sky/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
+                      <ul className="relative gold-edge edge-b-1 rounded-2xl border border-sky/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
                         {menu.map((s) => (
                           <li key={s.slug}>
                             <Link
@@ -116,7 +117,8 @@ export default function Navbar({ nav, menu }: Props) {
                   <Link
                     href={item.href}
                     aria-current={isActive(pathname, item.href) && !item.href.includes("#") ? "page" : undefined}
-                    className={`transition-colors hover:text-sky ${
+                    data-active={isActive(pathname, item.href) && !item.href.includes("#")}
+                    className={`nav-link transition-colors hover:text-sky ${
                       isActive(pathname, item.href) && !item.href.includes("#") ? "text-sky" : ""
                     }`}
                   >
@@ -129,12 +131,14 @@ export default function Navbar({ nav, menu }: Props) {
         </nav>
 
         <div className="hidden xl:block">
-          <Button href="/contact#book">Book Now</Button>
+          <Button href="/contact#book" variant="book">
+            Book Now
+          </Button>
         </div>
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky/40 text-sky xl:hidden"
+          className="flex h-11 w-11 items-center justify-center relative gold-edge edge-b-1 rounded-lg border border-sky/40 text-sky focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -147,7 +151,7 @@ export default function Navbar({ nav, menu }: Props) {
       </Container>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-24 bottom-0 z-30 flex flex-col border-t border-sky/20 bg-ink/95 backdrop-blur xl:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 top-24 bottom-0 z-30 flex flex-col fade-rule bg-ink/95 backdrop-blur xl:hidden">
           <Container className="flex-1 overflow-y-auto py-4">
             <ul className="flex flex-col">
               {nav.map((item) => (
@@ -174,9 +178,9 @@ export default function Navbar({ nav, menu }: Props) {
               ))}
             </ul>
           </Container>
-          <div className="shrink-0 border-t border-sky/20 bg-ink">
+          <div className="shrink-0 fade-rule bg-ink">
             <Container className="py-4">
-              <Button href="/contact#book" className="w-full">
+              <Button href="/contact#book" variant="book" className="w-full">
                 Book Now
               </Button>
             </Container>
