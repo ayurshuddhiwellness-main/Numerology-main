@@ -6,7 +6,7 @@ import { about, site } from "@/content/site";
 export const metadata: Metadata = {
   title: "About Abbhiraath Singh",
   description:
-    "Astro-numerologist, spiritual counsellor and creator of AstroNumeroYoga, with over a decade of guiding people through life's turning points.",
+    "Astro-numerologist and spiritual counsellor with over a decade of guiding people through life's turning points using astrology and numerology.",
 };
 
 const rule = "border-sky/25";
@@ -31,14 +31,14 @@ export default function AboutPage() {
           <p className="max-w-5xl font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[44px]">
             {intro.statement}
           </p>
-          <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
-            <div className={`gold-edge relative aspect-[3/2] overflow-hidden rounded-[20px] border ${rule}`}>
+          <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+            <div className={`gold-edge relative aspect-[4/3] overflow-hidden rounded-[20px] border ${rule} sm:aspect-[4/5]`}>
               <Image
                 src={intro.image.src}
                 alt={intro.image.alt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="object-cover object-[50%_78%]"
               />
             </div>
             <div className="flex flex-col gap-5">
@@ -52,10 +52,10 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* AstroNumeroYoga */}
+      {/* His approach */}
       <section className="py-16 lg:py-24">
-        <Container className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-16">
-          <div>
+        <Container>
+          <div className="max-w-4xl">
             <Eyebrow>{method.eyebrow}</Eyebrow>
             <Title>{method.title}</Title>
             <p className="mt-6 text-base leading-relaxed lg:text-lg">{method.lead}</p>
@@ -76,15 +76,6 @@ export default function AboutPage() {
               ))}
             </ol>
             <p className="mt-8 text-base leading-relaxed lg:text-lg">{method.close}</p>
-          </div>
-          <div className={`gold-edge relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[20px] border ${rule} lg:max-w-none`}>
-            <Image
-              src={method.image.src}
-              alt={method.image.alt}
-              fill
-              sizes="(min-width: 1024px) 32vw, 100vw"
-              className="object-cover object-[50%_35%]"
-            />
           </div>
         </Container>
       </section>
