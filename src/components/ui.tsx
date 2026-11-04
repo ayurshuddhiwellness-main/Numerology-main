@@ -25,7 +25,7 @@ export function buttonClass(variant: ButtonVariant = "filled") {
   if (variant === "book") return `${base} gold-fill text-ink hover:shadow-gold-glow`;
   return variant === "filled"
     ? `${base} bg-sky text-ink hover:bg-sky-soft hover:shadow-gold-glow`
-    : `${base} border-2 border-sky edge-w-2 edge-b-2 text-sky hover:bg-gold-soft/10`;
+    : `${base} border border-gold/60 edge-b-1 text-gold-soft hover:border-gold hover:bg-gold/10`;
 }
 
 /** Small sky label above section titles, e.g. "SERVICES". */
