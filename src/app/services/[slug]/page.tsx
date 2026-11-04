@@ -33,7 +33,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
-      <PageHeader title={service.title} numeral={String(services.indexOf(service) + 1)} />
+      <PageHeader title={service.title} numeral={String(services.indexOf(service) + 1)} image={service.image} />
 
       <section className="pt-20 lg:pt-28">
         <Container>

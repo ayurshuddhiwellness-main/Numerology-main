@@ -21,11 +21,14 @@ export type Service = {
   intro: string;
   inputs: string[]; // what the client shares before a consultation (How it works)
   topics: Topic[];
+  /** Card and page-header photo. `position` is the CSS object-position used when cropping. */
+  image: { src: string; alt: string; position: string };
 };
 
 export const services: Service[] = [
   {
     slug: "astrology",
+    image: { src: "/images/service-astrology.jpg", alt: "A gold pendulum resting on an astrology chart", position: "45% 60%" },
     title: "Astrology Consultancy",
     intro: "Gain deeper insights into your personality, life patterns, planetary influences and important life decisions through personalised Vedic astrology consultations.",
     inputs: ["Date of birth", "Time of birth", "Place of birth"],
@@ -200,6 +203,7 @@ export const services: Service[] = [
   },
   {
     slug: "numerology",
+    image: { src: "/images/service-numerology.jpg", alt: "Hands holding numbered stones over astrology and numerology charts", position: "50% 55%" },
     title: "Numerology Consultancy",
     intro: "Discover the significance of numbers and their influence on different aspects of life. Our numerology consultations focus on name analysis, personal numbers, business identity, relationships and life direction through personalised numerological insights.",
     inputs: ["Full name", "Date of birth"],
@@ -345,6 +349,7 @@ export const services: Service[] = [
   },
   {
     slug: "vastu-shastra",
+    image: { src: "/images/service-vastu-shastra.jpg", alt: "A colourful, symmetrical mandala", position: "50% 50%" },
     title: "Vastu Shastra Consultancy",
     intro: "Create balanced and harmonious living and working environments through traditional Vastu Shastra principles. Our consultations focus on directional alignment, spatial planning and practical Vastu recommendations for residential and commercial properties.",
     inputs: ["Property type", "City", "Online or on-site consultation"],
@@ -462,6 +467,7 @@ export const services: Service[] = [
   },
   {
     slug: "personal-spiritual-guidance",
+    image: { src: "/images/service-personal-spiritual-guidance.jpg", alt: "Hands folded quietly on soft linen", position: "70% 50%" },
     title: "Personal & Spiritual Guidance",
     intro: "Guidance for personal growth, life purpose and business decisions, drawn from astrology, numerology and Vastu.", // TODO(confirm)
     inputs: ["Date of birth", "The areas of life you would like to explore"], // TODO(confirm)

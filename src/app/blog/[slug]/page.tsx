@@ -38,7 +38,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mt-12 grid gap-12 lg:mt-[100px] lg:grid-cols-[168px_1fr] lg:gap-[269px]">
             {/* Share column */}
             <aside className="order-2 lg:order-1">
-              <h2 className="font-display text-3xl font-bold text-sky lg:text-[34px]">Share on</h2>
+              <h2 className="font-display text-3xl font-bold text-gold lg:text-[34px]">Share on</h2>
               <ul className="mt-4 flex flex-wrap gap-6 lg:flex-col lg:gap-5">
                 {share.map((s) => (
                   <li key={s.label}>
@@ -46,7 +46,7 @@ export default async function BlogPostPage({ params }: Props) {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-lg font-semibold text-white hover:text-sky lg:text-lg"
+                      className="flex items-center gap-3 text-lg font-semibold text-white transition-colors hover:text-gold lg:text-lg"
                     >
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         {s.icon}
@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Article */}
             <article className="order-1 max-w-[1291px] lg:order-2">
-              <p className="text-base font-semibold text-sky lg:text-lg">{post.date}</p>
+              <p className="text-base font-semibold text-gold lg:text-lg">{post.date}</p>
               <h1 className="mt-3 font-display text-4xl leading-[1.1] font-bold text-white lg:text-[52px]">{post.title}</h1>
               <p className="mt-10 text-lg leading-relaxed text-white lg:mt-[60px] lg:text-lg">{post.excerpt}</p>
               {post.sections.map((sec) => (

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Service } from "@/content/services";
 import type { NumberForecast, Post } from "@/content/site";
@@ -13,7 +14,7 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
       <div className={flip ? "md:order-2" : ""}>
         <span className="text-lg font-semibold text-gold lg:text-lg">0{index + 1}</span>
         <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[34px]">
-          <Link href={`/services/${service.slug}`} className="hover:text-sky">
+          <Link href={`/services/${service.slug}`} className="transition-colors hover:text-gold">
             {service.title}
           </Link>
         </h3>
@@ -24,7 +25,23 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
           </Button>
         )}
       </div>
-      <NumeralArt numeral={String(index + 1)} label={`${service.title} artwork`} className="h-56 sm:h-72 lg:h-[300px]" />
+      <Link
+        href={`/services/${service.slug}`}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="gold-edge group relative block h-56 overflow-hidden rounded-[20px] border border-sky/25 sm:h-72 lg:h-[300px]"
+      >
+        <Image
+          src={service.image.src}
+          alt=""
+          fill
+          sizes="(min-width: 768px) 45vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
+          style={{ objectPosition: service.image.position }}
+        />
+        {/* Gentle navy wash so bright photos sit calmly on the dark page */}
+        <span className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-ink/10" />
+      </Link>
     </article>
   );
 }
@@ -60,9 +77,9 @@ export function PostCard({ post, headingLevel = "h3" }: { post: Post; headingLev
       <Link href={`/blog/${post.slug}`} aria-hidden="true" tabIndex={-1}>
         <NumeralArt numeral={post.numeral} label={`${post.title} cover`} className="h-60 sm:h-80 lg:h-[468px]" />
       </Link>
-      <p className="mt-6 text-base font-semibold text-sky lg:text-lg">{post.date}</p>
+      <p className="mt-6 text-base font-semibold text-gold lg:text-lg">{post.date}</p>
       <H className="mt-3 font-display text-3xl font-bold text-white lg:text-[42px]">
-        <Link href={`/blog/${post.slug}`} className="hover:text-sky">
+        <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-gold">
           {post.title}
         </Link>
       </H>

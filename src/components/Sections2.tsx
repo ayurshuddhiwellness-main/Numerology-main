@@ -170,7 +170,7 @@ export function Footer() {
               <p className="mt-5 text-base lg:text-lg">{site.footerLine}</p>
               <div className="mt-6 flex gap-4">
                 {(Object.keys(socialIcons) as (keyof typeof socialIcons)[]).map((k) => (
-                  <a key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-sky">
+                  <a key={k} href={site.social[k]} aria-label={k} className="text-white transition-colors hover:text-gold">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       {socialIcons[k]}
                     </svg>
@@ -181,11 +181,11 @@ export function Footer() {
 
             {footerLinks.map((col) => (
               <div key={col.heading}>
-                <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">{col.heading}</h3>
+                <h3 className="font-display text-2xl font-bold text-gold lg:text-[28px]">{col.heading}</h3>
                 <ul className="mt-5 flex flex-col gap-3 text-base lg:text-lg">
                   {col.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="hover:text-sky">
+                      <Link href={l.href} className="transition-colors hover:text-gold">
                         {l.label}
                       </Link>
                     </li>
@@ -195,19 +195,19 @@ export function Footer() {
             ))}
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">
-                <Link href="/contact" className="hover:text-sky-soft">
+              <h3 className="font-display text-2xl font-bold text-gold lg:text-[28px]">
+                <Link href="/contact" className="transition-colors hover:text-gold-soft">
                   Contact Us
                 </Link>
               </h3>
               <ul className="mt-5 flex flex-col gap-3 text-base lg:text-lg">
                 <li>
-                  <a href={`mailto:${site.contact.email}`} className="hover:text-sky">
+                  <a href={`mailto:${site.contact.email}`} className="transition-colors hover:text-gold">
                     {site.contact.email}
                   </a>
                 </li>
                 <li>
-                  <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-sky">
+                  <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="transition-colors hover:text-gold">
                     {site.contact.phone}
                   </a>
                 </li>
@@ -216,7 +216,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">Get weekly number insights</h3>
+              <h3 className="font-display text-2xl font-bold text-gold lg:text-[28px]">Get weekly number insights</h3>
               {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
               <form className="mt-5 flex gap-3" action="#">
                 <label htmlFor="newsletter-email" className="sr-only">
@@ -229,7 +229,7 @@ export function Footer() {
                   placeholder="Your Email"
                   className="min-w-0 flex-1 rounded-lg border border-cream/30 hover:border-gold bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:border-gold focus:outline-2 focus:outline-gold"
                 />
-                <button type="submit" className={buttonClass("filled")}>
+                <button type="submit" className={buttonClass("book")}>
                   Subscribe
                 </button>
               </form>
