@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import { Commitments, ExpertsPreview, ForecastGrid, ServicesPreview, WhyChooseUs } from "@/components/Sections";
+import { Commitments, Practitioner, ForecastGrid, ServicesPreview, WhyChooseUs } from "@/components/Sections";
 import { Banner, BlogStrip, Pricing, Testimonial } from "@/components/Sections2";
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
         id="about"
         cover={{ src: "/images/home-cover.jpg", alt: "Divination dice on a decorated circular chart" }}
       />
-      <ExpertsPreview />
+      <Practitioner />
       <WhyChooseUs />
       <ServicesPreview />
       <ForecastGrid limit={6} />

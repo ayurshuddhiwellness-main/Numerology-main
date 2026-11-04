@@ -120,6 +120,23 @@ export const numbers: NumberForecast[] = [
   },
 ];
 
+/* ---------------- Practitioner (homepage) ---------------- */
+
+export const practitioner = {
+  label: "Meet Your Guide",
+  name: "Dr. Abbhiraath Singh",
+  role: "Life Coach, Spiritual Counsellor & Astro-Numerologist",
+  bio: [
+    "For over a decade, Abbhiraath Singh has walked with people through life's turning points, holding to one belief: the power to change your life is already within you. Through AstroNumeroYoga, his own blend of numerology, astrology and yoga, he helps you find clarity and direction when worry clouds your goals.",
+  ],
+  highlights: [
+    { icon: "clock", text: "Over a decade of one-on-one counselling" },
+    { icon: "sparkle", text: "Creator of AstroNumeroYoga" },
+    { icon: "compass", text: "Traditional wisdom, practical approach" },
+  ],
+  image: { src: "/images/practitioner.jpg", width: 962, height: 1280, alt: "Dr. Abbhiraath Singh seated at a table with a laptop" },
+} as const;
+
 /* ---------------- About ---------------- */
 
 export const commitments = [

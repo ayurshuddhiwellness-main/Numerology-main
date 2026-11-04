@@ -1,6 +1,6 @@
 import { services } from "@/content/services";
-import { commitments, experts, numbers, reasons } from "@/content/site";
-import { ExpertCard, NumberCard, ServiceRow } from "./cards";
+import { commitments, numbers, practitioner, reasons } from "@/content/site";
+import { NumberCard, ServiceRow } from "./cards";
 import Image from "next/image";
 import FigmaGlow from "./FigmaGlow";
 import { Button, Container, Eyebrow, NumeralArt, Title } from "./ui";
@@ -34,24 +34,70 @@ export function Commitments({ id, cover }: { id?: string; cover?: { src: string;
   );
 }
 
-/* ---------- Team preview (Home) ---------- */
-export function ExpertsPreview() {
+/* ---------- Practitioner (Home): photo on one side, bio and highlights beside it ---------- */
+const highlightIcons = {
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </>
+  ),
+  sparkle: <path d="M12 3c.6 4.6 3.4 7.4 8 8-4.6.6-7.4 3.4-8 8-.6-4.6-3.4-7.4-8-8 4.6-.6 7.4-3.4 8-8Z" />,
+  compass: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" />
+    </>
+  ),
+};
+
+export function Practitioner() {
+  const p = practitioner;
   return (
-    <section className="py-20 lg:py-[115px]">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <Title>
-            Meet Our <em>Experts</em>
-          </Title>
-          <Button href="/experts" variant="outline">
-            All Experts
-          </Button>
+    <section id="practitioner" className="py-20 lg:py-[115px]">
+      <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
+        <div className="gold-edge relative overflow-hidden rounded-[20px] border border-sky/25">
+          <Image
+            src={p.image.src}
+            alt={p.image.alt}
+            width={p.image.width}
+            height={p.image.height}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            className="h-auto w-full object-cover"
+          />
         </div>
-        <ul className="mt-12 grid grid-cols-2 gap-5 lg:mt-16 lg:grid-cols-4 lg:gap-6">
-          {experts.slice(0, 4).map((p, i) => (
-            <ExpertCard key={p.name} {...p} index={i} />
+
+        <div>
+          <Eyebrow>{p.label}</Eyebrow>
+          <Title>{p.name}</Title>
+          <p className="mt-5 font-display text-2xl font-bold text-sky lg:text-[32px]">{p.role}</p>
+          {p.bio.map((para) => (
+            <p key={para.slice(0, 24)} className="mt-6 text-base leading-relaxed lg:text-xl">
+              {para}
+            </p>
           ))}
-        </ul>
+          <ul className="mt-10 border-t border-sky/25">
+            {p.highlights.map((h) => (
+              <li key={h.text} className="flex items-center gap-4 border-b border-sky/25 py-5 text-base text-white lg:text-xl">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                  className="shrink-0 text-sky"
+                >
+                  {highlightIcons[h.icon]}
+                </svg>
+                {h.text}
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   );
