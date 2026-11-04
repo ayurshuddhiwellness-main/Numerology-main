@@ -1,11 +1,12 @@
 import { services } from "@/content/services";
 import { commitments, experts, numbers, reasons } from "@/content/site";
 import { ExpertCard, NumberCard, ServiceRow } from "./cards";
+import Image from "next/image";
 import FigmaGlow from "./FigmaGlow";
 import { Button, Container, Eyebrow, NumeralArt, Title } from "./ui";
 
 /* ---------- Commitment statement + three points (Home, About) ---------- */
-export function Commitments({ id }: { id?: string }) {
+export function Commitments({ id, cover }: { id?: string; cover?: { src: string; alt: string } }) {
   return (
     <section id={id} className="py-20 lg:py-[115px]">
       <Container>
@@ -21,7 +22,13 @@ export function Commitments({ id }: { id?: string }) {
             </div>
           ))}
         </div>
-        <NumeralArt numeral="9" label="Decorative numerology artwork" className="mt-14 h-56 sm:h-72 lg:mt-20 lg:h-[380px]" />
+        {cover ? (
+          <div className="relative mt-14 h-56 overflow-hidden rounded-[20px] border border-gold/25 sm:h-72 lg:mt-20 lg:h-[380px]">
+            <Image src={cover.src} alt={cover.alt} fill sizes="(min-width: 1800px) 1728px, 100vw" className="object-cover" />
+          </div>
+        ) : (
+          <NumeralArt numeral="9" label="Decorative numerology artwork" className="mt-14 h-56 sm:h-72 lg:mt-20 lg:h-[380px]" />
+        )}
       </Container>
     </section>
   );

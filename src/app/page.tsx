@@ -6,7 +6,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Commitments id="about" />
+      <Commitments
+        id="about"
+        cover={{ src: "/images/home-cover.jpg", alt: "Divination dice on a decorated circular chart" }}
+      />
       <ExpertsPreview />
       <WhyChooseUs />
       <ServicesPreview />
