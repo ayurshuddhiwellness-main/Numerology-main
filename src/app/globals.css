@@ -141,6 +141,39 @@ a.glass-card:hover {
   margin-right: -0.06em;
 }
 
+/*
+  Number medallion on the forecast cards: a faint gold glow behind the numeral,
+  a fine gold ring, and a second hairline ring just outside it. Brightens a
+  little when the card is hovered.
+*/
+.gold-medallion {
+  background: radial-gradient(
+    circle at 50% 42%,
+    color-mix(in srgb, var(--color-gold) 22%, transparent) 0%,
+    color-mix(in srgb, var(--color-gold) 6%, transparent) 55%,
+    transparent 72%
+  );
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  box-shadow:
+    0 0 28px color-mix(in srgb, var(--color-gold) 16%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--color-gold) 10%, transparent);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.gold-medallion::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 16%, transparent);
+  pointer-events: none;
+}
+.glass-card:hover .gold-medallion {
+  border-color: color-mix(in srgb, var(--color-gold) 70%, transparent);
+  box-shadow:
+    0 0 40px color-mix(in srgb, var(--color-gold) 26%, transparent),
+    inset 0 0 16px color-mix(in srgb, var(--color-gold) 14%, transparent);
+}
+
 /* Gold call-to-action fill (Book buttons). Ink text on it is 5.7:1 or better. */
 .gold-fill {
   background: linear-gradient(135deg, var(--color-gold-soft), var(--color-gold) 55%, var(--color-gold-deep));

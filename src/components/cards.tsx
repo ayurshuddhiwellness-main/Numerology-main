@@ -39,9 +39,9 @@ export function NumberCard({ n }: { n: NumberForecast }) {
       >
         <span
           aria-hidden="true"
-          className="relative flex h-20 w-20 items-center justify-center rounded-full border border-sky/50 gold-edge edge-b-1 bg-sky/5 font-display text-5xl leading-none font-bold text-sky italic"
+          className="gold-medallion relative flex h-20 w-20 items-center justify-center rounded-full font-display text-5xl leading-none font-bold italic"
         >
-          {n.number}
+          <span className="gold-text pr-[0.08em]">{n.number}</span>
         </span>
         <h3 className="mt-5 font-display text-3xl font-bold text-white lg:text-[40px]">
           Number {n.number} ({n.planet})
