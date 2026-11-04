@@ -23,9 +23,9 @@ export default function BlogPage() {
             </Link>
             <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-16">
               <div>
-                <p className="text-base font-semibold text-gold lg:text-[22px]">{featured.date}</p>
+                <p className="text-base font-semibold text-sky lg:text-[22px]">{featured.date}</p>
                 <h2 className="mt-3 font-display text-3xl font-bold text-white lg:text-5xl">
-                  <Link href={`/blog/${featured.slug}`} className="hover:text-gold">
+                  <Link href={`/blog/${featured.slug}`} className="hover:text-sky">
                     {featured.title}
                   </Link>
                 </h2>

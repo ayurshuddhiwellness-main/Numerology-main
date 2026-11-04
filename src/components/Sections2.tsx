@@ -23,14 +23,14 @@ export function Banner({
   return (
     <section className="py-10 lg:py-[115px]">
       <Container>
-        <div className="relative isolate grid overflow-hidden rounded-[24px] border border-gold/20 bg-[linear-gradient(120deg,#3a0a14_0%,#6e1424_45%,#2a0a12_100%)] md:grid-cols-2">
+        <div className="relative isolate grid overflow-hidden rounded-[24px] border border-sky/20 bg-azure bg-[radial-gradient(ellipse_at_30%_45%,color-mix(in_srgb,var(--color-sky)_35%,transparent),transparent_65%),linear-gradient(to_bottom_right,transparent,color-mix(in_srgb,var(--color-ink)_60%,transparent))] md:grid-cols-2">
           <div aria-hidden="true" className="relative hidden min-h-[320px] md:block">
-            <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-gold-soft/40" />
-            <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-gold-soft/70" />
-            <div className="absolute top-1/2 left-[30%] h-40 w-40 -translate-y-1/2 rounded-full bg-gold/30 blur-3xl" />
-            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-gold" />
-            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-gold" />
-            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-gold" />
+            <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-sky-soft/40" />
+            <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-sky-soft/70" />
+            <div className="absolute top-1/2 left-[30%] h-40 w-40 -translate-y-1/2 rounded-full bg-sky/30 blur-3xl" />
+            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-sky" />
+            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-sky" />
+            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-sky" />
           </div>
           <div className="relative px-7 py-12 md:py-16 md:pr-14 lg:py-24">
             <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[64px]">
@@ -61,22 +61,22 @@ export function Pricing() {
             <article
               key={p.name}
               className={`glass-card relative flex flex-col items-center px-8 pt-14 pb-12 ${
-                p.popular ? "bg-[radial-gradient(circle_at_50%_40%,rgba(214,175,84,0.22),transparent_65%)] lg:-translate-y-3" : ""
+                p.popular ? "bg-[radial-gradient(circle_at_50%_40%,color-mix(in_srgb,var(--color-sky)_22%,transparent),transparent_65%)] lg:-translate-y-3" : ""
               }`}
             >
               {p.popular && (
-                <span className="absolute top-0 right-6 rounded-b-lg bg-gold px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
+                <span className="absolute top-0 right-6 rounded-b-lg bg-sky px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
                   Popular
                 </span>
               )}
               <h3 className="font-display text-4xl font-bold text-white lg:text-5xl">{p.name}</h3>
-              <p className="mt-2 text-base font-semibold text-gold lg:text-[22px]">{p.tier}</p>
+              <p className="mt-2 text-base font-semibold text-sky lg:text-[22px]">{p.tier}</p>
               <ul className="mt-10 flex flex-col gap-5 text-base text-white lg:text-xl">
                 {p.features.map((f) => (
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <p className="mt-10 font-display text-6xl font-bold text-gold italic">{p.price}</p>
+              <p className="mt-10 font-display text-6xl font-bold text-sky italic">{p.price}</p>
               <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="outline" className="mt-10">
                 Book Now
               </Button>
@@ -158,16 +158,16 @@ export const socialIconPaths = socialIcons;
 export function Footer() {
   return (
     <footer className="relative isolate overflow-hidden pt-16 pb-10 lg:pt-24">
-      <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-40 -z-10 h-64 rounded-full bg-maroon-2/60 blur-[100px]" />
+      <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-40 -z-10 h-64 rounded-full bg-azure/60 blur-[100px]" />
       <Container>
-        <div className="border-t border-gold/15 pt-16 lg:pt-24">
+        <div className="border-t border-sky/15 pt-16 lg:pt-24">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
             <div>
               <Logo />
               <p className="mt-5 text-base lg:text-xl">{site.footerLine}</p>
               <div className="mt-6 flex gap-4">
                 {(Object.keys(socialIcons) as (keyof typeof socialIcons)[]).map((k) => (
-                  <a key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-gold">
+                  <a key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-sky">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       {socialIcons[k]}
                     </svg>
@@ -178,11 +178,11 @@ export function Footer() {
 
             {footerLinks.map((col) => (
               <div key={col.heading}>
-                <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">{col.heading}</h3>
+                <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">{col.heading}</h3>
                 <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
                   {col.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="hover:text-gold">
+                      <Link href={l.href} className="hover:text-sky">
                         {l.label}
                       </Link>
                     </li>
@@ -192,19 +192,19 @@ export function Footer() {
             ))}
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">
-                <Link href="/contact" className="hover:text-gold-soft">
+              <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">
+                <Link href="/contact" className="hover:text-sky-soft">
                   Contact Us
                 </Link>
               </h3>
               <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
                 <li>
-                  <a href={`mailto:${site.contact.email}`} className="hover:text-gold">
+                  <a href={`mailto:${site.contact.email}`} className="hover:text-sky">
                     {site.contact.email}
                   </a>
                 </li>
                 <li>
-                  <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-gold">
+                  <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="hover:text-sky">
                     {site.contact.phone}
                   </a>
                 </li>
@@ -213,7 +213,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-gold lg:text-[32px]">Get weekly number insights</h3>
+              <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">Get weekly number insights</h3>
               {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
               <form className="mt-5 flex overflow-hidden rounded-lg border border-cream/30" action="#">
                 <label htmlFor="newsletter-email" className="sr-only">
@@ -226,13 +226,13 @@ export function Footer() {
                   placeholder="Your Email"
                   className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:outline-none"
                 />
-                <button type="submit" className="bg-gold px-5 text-base font-medium text-ink hover:bg-gold-soft">
+                <button type="submit" className="bg-sky px-5 text-base font-medium text-ink hover:bg-sky-soft">
                   Subscribe
                 </button>
               </form>
             </div>
           </div>
-          <p className="mt-16 border-t border-gold/15 pt-8 text-center text-sm text-cream/70">
+          <p className="mt-16 border-t border-sky/15 pt-8 text-center text-sm text-cream/70">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
         </div>

@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1277.79" height="712.184" viewBox="0 0 1277.79 712.184" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="1.36023e-07" y="2.69173e-08" width="1277.79" height="712.184"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(34.43px);clip-path:url(#bgblur_0_0_12_clip_path);height:100%;width:100%"></div></foreignObject><g id="Shape" filter="url(#filter0_f_0_12)" data-figma-bg-blur-radius="68.8658">
+<path d="M957.555 164.702C957.555 93.5787 1159.52 228.208 1056.98 176.886C998.29 147.513 734.53 195.84 491.799 69.3391C399.122 63.34 564.413 116.371 501.124 115.112C353.141 112.169 373.962 114.02 262.936 161.095C151.911 208.17 83.0788 274.032 70.8324 344.912C58.5859 415.792 103.873 486.202 197.225 541.419C290.577 596.637 424.765 632.387 571.735 641.196C718.704 650.004 867.075 631.189 985.826 588.684C1104.58 546.179 1184.51 483.275 1208.92 413.124L642.819 367.702L957.555 164.702Z" fill="url(#paint0_radial_0_12)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_12" x="1.36023e-07" y="2.69173e-08" width="1277.79" height="712.184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="34.4329" result="effect1_foregroundBlur_0_12"/>
+</filter>
+<clipPath id="bgblur_0_0_12_clip_path" transform="translate(-1.36023e-07 -2.69173e-08)"><path d="M957.555 164.702C957.555 93.5787 1159.52 228.208 1056.98 176.886C998.29 147.513 734.53 195.84 491.799 69.3391C399.122 63.34 564.413 116.371 501.124 115.112C353.141 112.169 373.962 114.02 262.936 161.095C151.911 208.17 83.0788 274.032 70.8324 344.912C58.5859 415.792 103.873 486.202 197.225 541.419C290.577 596.637 424.765 632.387 571.735 641.196C718.704 650.005 867.075 631.189 985.826 588.684C1104.58 546.179 1184.51 483.275 1208.92 413.124L642.819 367.702L957.555 164.702Z"/>
+</clipPath><radialGradient id="paint0_radial_0_12" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(638.894 356.092) rotate(90) scale(265.684 527.276)">
+<stop stop-color="#1B4A82"/>
+<stop offset="1" stop-color="#1B4A82" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

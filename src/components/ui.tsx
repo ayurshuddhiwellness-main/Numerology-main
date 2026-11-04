@@ -19,16 +19,16 @@ export function Button({ href, children, variant = "filled", className = "" }: B
 
 export function buttonClass(variant: "filled" | "outline" = "filled") {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer";
+    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky cursor-pointer";
   return variant === "filled"
-    ? `${base} bg-gold text-ink hover:bg-gold-soft`
-    : `${base} border border-gold text-gold hover:bg-gold hover:text-ink`;
+    ? `${base} bg-sky text-ink hover:bg-sky-soft`
+    : `${base} border-2 border-sky text-sky hover:bg-sky hover:text-ink`;
 }
 
-/** Small gold label above section titles, e.g. "SERVICES". */
+/** Small sky label above section titles, e.g. "SERVICES". */
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg ${className}`}>{children}</p>
+    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-sky lg:text-lg ${className}`}>{children}</p>
   );
 }
 
@@ -83,7 +83,7 @@ export function SwastikSeal({ size = 41, className = "" }: { size?: number; clas
 
 export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-3 text-gold" aria-label="Dr. Abbhiraath Singh, home">
+    <Link href="/" className="flex items-center gap-3 text-sky" aria-label="Dr. Abbhiraath Singh, home">
       <SwastikSeal size={41} />
       <span className="font-display text-2xl font-bold whitespace-nowrap lg:text-[26px]">Dr. Abbhiraath Singh</span>
     </Link>
@@ -101,7 +101,7 @@ export function Sparkle({ className = "", style }: { className?: string; style?:
 
 /**
  * Stand-in artwork for spots where the template had stock photos.
- * Shows a large numeral on a maroon glow so the layout still reads well
+ * Shows a large numeral on a azure glow so the layout still reads well
  * until real photography is added. TODO: replace with real images.
  */
 export function NumeralArt({ numeral, label, className = "" }: { numeral: string; label: string; className?: string }) {
@@ -109,19 +109,14 @@ export function NumeralArt({ numeral, label, className = "" }: { numeral: string
     <div
       role="img"
       aria-label={label}
-      className={`relative overflow-hidden rounded-[20px] border border-gold/25 bg-[radial-gradient(circle_at_30%_30%,#8a1c2e_0%,#3a0a14_45%,#14040a_100%)] ${className}`}
+      className={`relative overflow-hidden rounded-[20px] border border-sky/25 bg-[radial-gradient(circle_at_30%_30%,var(--color-azure)_0%,color-mix(in_srgb,var(--color-azure)_30%,var(--color-ink))_45%,var(--color-ink)_100%)] ${className}`}
     >
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="aspect-square h-[78%] rounded-full border border-gold/30" />
+        <div className="aspect-square h-[78%] rounded-full border border-sky/30" />
       </div>
-      <span className="absolute inset-0 flex items-center justify-center font-display text-[min(40vw,220px)] leading-none font-bold text-gold/90 italic">
+      <span className="absolute inset-0 flex items-center justify-center font-display text-[min(40vw,220px)] leading-none font-bold text-sky/90 italic">
         {numeral}
       </span>
     </div>
   );
-}
-
-/** Soft background glow used behind card grids (the Figma "Background" component). */
-export function Glow({ className = "" }: { className?: string }) {
-  return <div aria-hidden="true" className={`pointer-events-none absolute -z-10 rounded-full blur-[120px] ${className}`} />;
 }

@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 /*
-  Design tokens from the Figma file (Calestial template, rebranded).
+  Design tokens from the Figma file (Calestial template: navy + sky blue).
   Change these to re-skin the whole site for another client.
 */
 @theme {
-  --color-ink: #14040a;        /* page background (Solid Color/1) */
-  --color-ink-2: #1e0710;      /* raised surface */
-  --color-maroon: #6e1424;     /* glow / accent (Gradient/1) */
-  --color-maroon-2: #8a1c2e;
-  --color-gold: #d6af54;       /* primary accent (Solid Color/3) */
-  --color-gold-soft: #f3e3bc;
-  --color-cream: #e2e2e2;      /* body text (Solid Color/5) */
+  --color-ink: #0a192f;        /* page background (Solid Color/1) */
+  --color-azure: #1f5ead;      /* tint behind photos, banner (Gradient/1) */
+  --color-azure-deep: #1b4a82; /* glow and card fill (Gradient/1 stops) */
+  --color-sky: #80c0ff;        /* primary accent (Solid Color/3) */
+  --color-sky-soft: #d4eaff;   /* glow highlight and hover (Gradient/2) */
+  --color-cream: #ccd6f6;      /* body text (Solid Color/5) */
 
   --font-display: "Cormorant", Georgia, serif;
   --font-sans: "Montserrat", system-ui, sans-serif;
@@ -32,9 +31,47 @@ body {
 
 /* Soft card used by Why Choose Us, Forecast and Pricing */
 .glass-card {
-  background: linear-gradient(180deg, rgba(110, 20, 36, 0.18), rgba(20, 4, 10, 0.4));
-  border: 1px solid rgba(214, 175, 84, 0.25);
+  /* Mobile cards in Figma: blue fade with a faint sky border */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-azure-deep) 22%, transparent),
+    color-mix(in srgb, var(--color-ink) 50%, transparent)
+  );
+  border: 1px solid color-mix(in srgb, var(--color-sky) 25%, transparent);
   border-radius: 20px;
+}
+
+/* Desktop cards in Figma: faint grey tint with a white border */
+@media (min-width: 64rem) {
+  .glass-card {
+    background: color-mix(in srgb, var(--color-cream) 5%, transparent);
+    border-color: white;
+  }
+}
+
+/*
+  Expandable rows ("Show all N"). Animates grid-template-rows from 0fr to 1fr, the
+  usual way to ease an auto-height section open; the exception to the transform/opacity rule.
+*/
+.reveal-rows {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.reveal-rows[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.reveal-rows > * {
+  min-height: 0;
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-rows {
+    transition:
+      grid-template-rows 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+      opacity 0.35s ease;
+  }
 }
 
 /* Hover transitions are harmless when motion is reduced (colour/border only) */
@@ -101,7 +138,7 @@ body {
     animation-delay: 0.3s;
   }
 
-  /* Hero portrait fades in; the glow and gold ring breathe */
+  /* Hero portrait fades in; the glow and sky ring breathe */
   .hero-photo > :nth-child(3) {
     animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s backwards;
   }
@@ -131,11 +168,6 @@ body {
   #services-menu,
   #mobile-menu {
     animation: pop 0.2s ease-out;
-  }
-
-  /* "Show all" list fades in */
-  details[open] > :not(summary) {
-    animation: fade 0.3s ease-out;
   }
 
   /* Cards that are links or list items lift on hover */

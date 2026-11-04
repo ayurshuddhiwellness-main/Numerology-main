@@ -1,7 +1,8 @@
 import { services } from "@/content/services";
 import { commitments, experts, numbers, reasons } from "@/content/site";
 import { ExpertCard, NumberCard, ServiceRow } from "./cards";
-import { Button, Container, Eyebrow, Glow, NumeralArt, Title } from "./ui";
+import FigmaGlow from "./FigmaGlow";
+import { Button, Container, Eyebrow, NumeralArt, Title } from "./ui";
 
 /* ---------- Commitment statement + three points (Home, About) ---------- */
 export function Commitments({ id }: { id?: string }) {
@@ -53,7 +54,7 @@ export function ExpertsPreview() {
 export function WhyChooseUs() {
   return (
     <section className="relative isolate overflow-hidden py-20 lg:py-[115px]">
-      <Glow className="top-1/2 left-1/2 h-[60%] w-[70%] -translate-x-1/2 -translate-y-1/2 bg-maroon/50" />
+      <FigmaGlow variant="choose" />
       <Container>
         <Eyebrow>Why choose us</Eyebrow>
         <Title>
@@ -62,7 +63,7 @@ export function WhyChooseUs() {
         <div className="mt-12 grid gap-6 md:grid-cols-3 lg:mt-16">
           {reasons.map((r) => (
             <article key={r.title} className="glass-card flex flex-col items-center px-8 py-12 text-center">
-              <span aria-hidden="true" className="mb-8 h-4 w-4 rounded-full bg-gold shadow-[0_0_40px_18px_rgba(214,175,84,0.45)]" />
+              <span aria-hidden="true" className="mb-8 h-4 w-4 rounded-full bg-sky shadow-[0_0_40px_18px_color-mix(in_srgb,var(--color-sky)_45%,transparent)]" />
               <h3 className="font-display text-3xl font-bold text-white lg:text-[40px]">{r.title}</h3>
               <p className="mt-5 text-base leading-relaxed lg:text-xl">{r.body}</p>
             </article>
@@ -104,7 +105,7 @@ export function ForecastGrid({ limit, showTitle = true, showButton = true }: { l
   const list = limit ? numbers.slice(0, limit) : numbers;
   return (
     <section id="forecast" className="relative isolate overflow-hidden py-20 lg:py-[115px]">
-      <Glow className="top-1/3 left-1/3 h-[40%] w-[40%] bg-gold/15" />
+      <FigmaGlow variant="horoscope" />
       <Container className="text-center">
         {showTitle && (
           <>

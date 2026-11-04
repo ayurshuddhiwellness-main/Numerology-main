@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1491.9" height="338.463" viewBox="0 0 1491.9 338.463" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-2.53995e-06" y="3.52477e-06" width="1491.9" height="338.463"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(34.43px);clip-path:url(#bgblur_0_0_10_clip_path);height:100%;width:100%"></div></foreignObject><g id="Shape" opacity="0.4" filter="url(#filter0_f_0_10)" data-figma-bg-blur-radius="68.8657" style="mix-blend-mode:color-dodge">
+<path d="M1423.04 169.231C1423.04 143.332 1355.49 118.435 1234.53 99.746C1113.56 81.0572 948.542 70.0235 773.968 68.9518C599.395 67.8801 428.784 76.8535 297.808 93.9957C166.833 111.138 85.6327 135.122 71.1858 160.933C56.7388 186.743 110.163 212.383 220.29 232.49C330.416 252.598 488.717 265.616 662.095 268.824C835.473 272.032 1010.51 265.18 1150.59 249.702C1290.68 234.224 1384.98 211.317 1413.78 185.772L745.952 169.231H1423.04Z" fill="#80C0FF"/>
+</g>
+<defs>
+<filter id="filter0_f_0_10" x="-2.53995e-06" y="3.52477e-06" width="1491.9" height="338.463" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="34.4329" result="effect1_foregroundBlur_0_10"/>
+</filter>
+<clipPath id="bgblur_0_0_10_clip_path" transform="translate(2.53995e-06 -3.52477e-06)"><path d="M1423.04 169.231C1423.04 143.332 1355.49 118.435 1234.53 99.746C1113.56 81.0572 948.542 70.0235 773.969 68.9518C599.395 67.8801 428.784 76.8535 297.808 93.9957C166.833 111.138 85.6327 135.122 71.1858 160.933C56.7388 186.743 110.163 212.383 220.29 232.49C330.416 252.598 488.717 265.616 662.095 268.824C835.473 272.032 1010.51 265.18 1150.59 249.702C1290.68 234.224 1384.98 211.317 1413.78 185.772L745.952 169.231H1423.04Z"/>
+</clipPath></defs>
+</svg>

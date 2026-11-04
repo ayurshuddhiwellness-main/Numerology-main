@@ -45,13 +45,13 @@ export default async function NumberForecastPage({ params }: Props) {
                       href={`/forecast/${x.number}`}
                       aria-current={active ? "page" : undefined}
                       className={`flex items-center gap-4 rounded-xl px-3 py-2 font-display text-xl font-bold transition-colors lg:px-0 lg:py-0 lg:text-[32px] ${
-                        active ? "text-gold" : "text-white hover:text-gold"
+                        active ? "text-sky" : "text-white hover:text-sky"
                       }`}
                     >
                       <span
                         aria-hidden="true"
                         className={`flex h-12 w-12 items-center justify-center rounded-full border text-2xl italic ${
-                          active ? "border-gold bg-gold/10" : "border-gold/40"
+                          active ? "border-sky bg-sky/10" : "border-sky/40"
                         }`}
                       >
                         {x.number}
@@ -68,7 +68,7 @@ export default async function NumberForecastPage({ params }: Props) {
 
           {/* Right: this week's reading */}
           <article>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky lg:text-lg">
               Ruled by {n.planet}
             </p>
             <p className="mt-4 text-lg leading-relaxed text-white lg:text-xl">{n.general}</p>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import BookingForm from "@/components/BookingForm";
-import { Container, Glow, NumeralArt, PageHeader, Title } from "@/components/ui";
+import FigmaGlow from "@/components/FigmaGlow";
+import { Container, NumeralArt, PageHeader, Title } from "@/components/ui";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = { title: "Contact Us" };
@@ -18,15 +19,14 @@ export default function ContactPage() {
       <PageHeader title="Contact Us" numeral="2" />
 
       <section id="book" className="relative isolate scroll-mt-28 overflow-hidden py-20 lg:py-[100px]">
-        <Glow className="top-1/4 left-1/4 h-[60%] w-[60%] bg-maroon/50" />
-        <Glow className="top-1/3 left-[30%] h-[25%] w-[35%] bg-gold/20" />
+        <FigmaGlow variant="horoscope" />
         <Container className="grid gap-6 lg:grid-cols-[678px_1fr] lg:gap-[50px]">
           <ul className="flex flex-col gap-6 lg:gap-[50px]">
             {details.map((d) => (
               <li key={d.label} className="glass-card px-8 py-8 lg:px-[53px] lg:py-[44px]">
                 <p className="text-base font-semibold text-white lg:text-[22px]">{d.label}</p>
                 {d.href ? (
-                  <a href={d.href} className="mt-1 block font-display text-3xl font-bold break-words text-white hover:text-gold lg:text-5xl">
+                  <a href={d.href} className="mt-1 block font-display text-3xl font-bold break-words text-white hover:text-sky lg:text-5xl">
                     {d.value}
                   </a>
                 ) : (
@@ -53,7 +53,7 @@ export default function ContactPage() {
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.contact.mapQuery)}&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="mt-12 h-[360px] w-full rounded-[20px] border border-gold/25 lg:mt-16 lg:h-[579px]"
+              className="mt-12 h-[360px] w-full rounded-[20px] border border-sky/25 lg:mt-16 lg:h-[579px]"
             />
           ) : (
             // TODO: set site.contact.mapQuery to show the live map

@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1291.42" height="726.266" viewBox="0 0 1291.42 726.266" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="1.22147e-07" y="1.35014e-08" width="1291.42" height="726.266"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(34.43px);clip-path:url(#bgblur_0_0_9_clip_path);height:100%;width:100%"></div></foreignObject><g id="Shape" filter="url(#filter0_f_0_9)" data-figma-bg-blur-radius="68.8658">
+<path d="M968.181 167.051C968.181 94.1845 1172.56 232.114 1068.79 179.534C1009.4 149.441 742.489 198.952 496.856 69.3507C403.07 63.2045 570.338 117.535 506.292 116.246C356.54 113.231 377.61 115.127 265.257 163.356C152.903 211.584 83.2488 279.061 70.8559 351.679C58.463 424.296 104.292 496.432 198.76 553.003C293.228 609.574 429.021 646.201 577.748 655.225C726.474 664.25 876.619 644.973 996.79 601.426C1116.96 557.879 1197.85 493.433 1222.55 421.563L649.682 375.027L968.181 167.051Z" fill="url(#paint0_radial_0_9)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_9" x="1.22147e-07" y="1.35014e-08" width="1291.42" height="726.266" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="34.4329" result="effect1_foregroundBlur_0_9"/>
+</filter>
+<clipPath id="bgblur_0_0_9_clip_path" transform="translate(-1.22147e-07 -1.35014e-08)"><path d="M968.181 167.051C968.181 94.1845 1172.56 232.114 1068.79 179.534C1009.4 149.441 742.489 198.952 496.856 69.3507C403.07 63.2045 570.338 117.535 506.292 116.246C356.54 113.231 377.61 115.127 265.257 163.356C152.903 211.584 83.2488 279.061 70.8559 351.679C58.463 424.296 104.292 496.432 198.76 553.003C293.228 609.574 429.021 646.201 577.748 655.225C726.474 664.25 876.619 644.973 996.79 601.426C1116.96 557.879 1197.85 493.433 1222.55 421.563L649.682 375.027L968.181 167.051Z"/>
+</clipPath><radialGradient id="paint0_radial_0_9" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(645.71 363.133) rotate(90) scale(272.197 533.581)">
+<stop stop-color="#D4EAFF"/>
+<stop offset="1" stop-color="#80C0FF" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

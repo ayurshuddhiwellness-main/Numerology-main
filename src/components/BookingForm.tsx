@@ -18,7 +18,7 @@ const planOptions = plans.map((p) => `${p.name} (${p.price})`);
 const options = [...services.map((s) => s.title), ...programs, ...planOptions];
 
 const field =
-  "mt-2 w-full rounded-lg border border-cream/30 bg-white px-4 py-3 text-base text-ink placeholder:text-ink/50 focus:border-gold focus:outline-2 focus:outline-gold";
+  "mt-2 w-full rounded-lg border border-cream/30 bg-white px-4 py-3 text-base text-ink placeholder:text-ink/70 focus:border-sky focus:outline-2 focus:outline-sky";
 const labelCls = "text-base font-semibold text-white lg:text-[22px]";
 
 export default function BookingForm({ defaultService = "" }: { defaultService?: string }) {
@@ -119,7 +119,7 @@ export default function BookingForm({ defaultService = "" }: { defaultService?: 
       )}
       <div className="flex flex-wrap items-center justify-end gap-4 sm:col-span-2">
         {sent && (
-          <p role="status" className="text-base text-gold-soft">
+          <p role="status" className="text-base text-sky-soft">
             Your email app should open with your request ready to send.
           </p>
         )}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/content/site";
+import FigmaGlow from "./FigmaGlow";
 import { Button, Container, Sparkle } from "./ui";
 
 /* Decorative stars/dots, positioned in % so they hold on any screen width. */
@@ -19,12 +20,7 @@ const stars = [
 export default function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-24 lg:pt-[120px]">
-      {/* Background: dark base with blurred maroon glows, as in the Figma "Hero Background" */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink">
-        <div className="absolute top-[30%] left-[-10%] h-[55%] w-[70%] rotate-[-12deg] rounded-full bg-maroon/70 blur-[110px]" />
-        <div className="absolute top-[15%] right-[5%] h-[70%] w-[35%] rounded-full bg-maroon-2/60 blur-[120px]" />
-        <div className="absolute top-[40%] left-[25%] h-[22%] w-[60%] rounded-full bg-gradient-to-r from-gold/25 to-maroon-2/30 blur-[90px]" />
-      </div>
+      <FigmaGlow variant="hero" />
 
       <div aria-hidden="true" className="stars pointer-events-none absolute inset-0 -z-10 hidden md:block">
         {stars.map((st, i) =>
@@ -60,15 +56,15 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Left on desktop: Dr. Singh with gold glow and seal ring */}
+        {/* Left on desktop: Dr. Singh with sky glow and seal ring */}
         <div className="hero-photo relative mx-auto flex w-full max-w-[520px] justify-center lg:order-1 lg:max-w-none">
           <div
             aria-hidden="true"
-            className="absolute top-[4%] left-1/2 aspect-square w-[min(110%,760px)] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(214,175,84,0.55)_0%,rgba(214,175,84,0)_68%)]"
+            className="absolute top-[4%] left-1/2 aspect-square w-[min(110%,760px)] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-sky)_55%,transparent)_0%,transparent_68%)]"
           />
           <div
             aria-hidden="true"
-            className="absolute top-[11%] left-1/2 aspect-square w-[min(92%,640px)] -translate-x-1/2 rounded-full border-2 border-gold/60"
+            className="absolute top-[11%] left-1/2 aspect-square w-[min(92%,640px)] -translate-x-1/2 rounded-full border-2 border-sky/60"
           />
           <Image
             src="/images/dr-abbhiraath-singh.webp"

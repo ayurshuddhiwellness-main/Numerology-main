@@ -11,9 +11,9 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
   return (
     <article className="grid items-center gap-8 md:grid-cols-2 lg:gap-24">
       <div className={flip ? "md:order-2" : ""}>
-        <span className="text-lg font-semibold text-gold lg:text-[22px]">0{index + 1}</span>
+        <span className="text-lg font-semibold text-sky lg:text-[22px]">0{index + 1}</span>
         <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[40px]">
-          <Link href={`/services/${service.slug}`} className="hover:text-gold">
+          <Link href={`/services/${service.slug}`} className="hover:text-sky">
             {service.title}
           </Link>
         </h3>
@@ -35,11 +35,11 @@ export function NumberCard({ n }: { n: NumberForecast }) {
     <li>
       <Link
         href={`/forecast/${n.number}`}
-        className="glass-card flex h-full flex-col items-center px-7 py-10 text-center transition-colors hover:border-gold/60"
+        className="glass-card flex h-full flex-col items-center px-7 py-10 text-center transition-colors hover:border-sky/60"
       >
         <span
           aria-hidden="true"
-          className="flex h-20 w-20 items-center justify-center rounded-full border border-gold/50 bg-gold/5 font-display text-5xl leading-none font-bold text-gold italic"
+          className="flex h-20 w-20 items-center justify-center rounded-full border border-sky/50 bg-sky/5 font-display text-5xl leading-none font-bold text-sky italic"
         >
           {n.number}
         </span>
@@ -60,9 +60,9 @@ export function PostCard({ post, headingLevel = "h3" }: { post: Post; headingLev
       <Link href={`/blog/${post.slug}`} aria-hidden="true" tabIndex={-1}>
         <NumeralArt numeral={post.numeral} label={`${post.title} cover`} className="h-60 sm:h-80 lg:h-[468px]" />
       </Link>
-      <p className="mt-6 text-base font-semibold text-gold lg:text-[22px]">{post.date}</p>
+      <p className="mt-6 text-base font-semibold text-sky lg:text-[22px]">{post.date}</p>
       <H className="mt-3 font-display text-3xl font-bold text-white lg:text-5xl">
-        <Link href={`/blog/${post.slug}`} className="hover:text-gold">
+        <Link href={`/blog/${post.slug}`} className="hover:text-sky">
           {post.title}
         </Link>
       </H>
@@ -80,7 +80,7 @@ export function ExpertCard({ name, role, index }: { name: string; role: string; 
       {/* TODO: swap NumeralArt for each person's photo */}
       <NumeralArt numeral={String(index + 1)} label={`Photo of ${name}`} className="aspect-[417/504]" />
       <h3 className="mt-5 font-display text-xl font-bold text-white lg:text-[32px]">{name}</h3>
-      <p className="mt-1 text-sm text-gold lg:text-base">{role}</p>
+      <p className="mt-1 text-sm text-sky lg:text-base">{role}</p>
     </li>
   );
 }

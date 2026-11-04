@@ -72,7 +72,7 @@ export default function Navbar({ nav, menu }: Props) {
                   <div className="flex items-center gap-2">
                     <Link
                       href={item.href}
-                      className={`transition-colors hover:text-gold ${isActive(pathname, item.href) ? "text-gold" : ""}`}
+                      className={`transition-colors hover:text-sky ${isActive(pathname, item.href) ? "text-sky" : ""}`}
                     >
                       {item.label}
                     </Link>
@@ -84,7 +84,7 @@ export default function Navbar({ nav, menu }: Props) {
                       aria-controls="services-menu"
                       // A mouse already opened it on hover, so a click keeps it open; keyboard and touch toggle
                       onClick={(e) => setServicesOpen((e.nativeEvent as PointerEvent).pointerType === "mouse" || ((v) => !v))}
-                      className="flex h-11 w-6 items-center justify-center hover:text-gold"
+                      className="flex h-11 w-6 items-center justify-center hover:text-sky"
                     >
                       <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
                         <path d="M1 3l4 4 4-4" fill="currentColor" />
@@ -93,14 +93,14 @@ export default function Navbar({ nav, menu }: Props) {
                   </div>
                   {servicesOpen && (
                     <div id="services-menu" className="absolute top-full left-1/2 w-80 -translate-x-1/2 pt-4">
-                      <ul className="rounded-2xl border border-gold/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
+                      <ul className="rounded-2xl border border-sky/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
                         {menu.map((s) => (
                           <li key={s.slug}>
                             <Link
                               href={`/services/${s.slug}`}
                               onClick={() => setServicesOpen(false)}
-                              className={`block rounded-lg px-4 py-3 text-base transition-colors hover:bg-maroon/40 hover:text-gold ${
-                                pathname === `/services/${s.slug}` ? "text-gold" : ""
+                              className={`block rounded-lg px-4 py-3 text-base transition-colors hover:bg-azure/40 hover:text-sky ${
+                                pathname === `/services/${s.slug}` ? "text-sky" : ""
                               }`}
                             >
                               {s.title}
@@ -116,8 +116,8 @@ export default function Navbar({ nav, menu }: Props) {
                   <Link
                     href={item.href}
                     aria-current={isActive(pathname, item.href) && !item.href.includes("#") ? "page" : undefined}
-                    className={`transition-colors hover:text-gold ${
-                      isActive(pathname, item.href) && !item.href.includes("#") ? "text-gold" : ""
+                    className={`transition-colors hover:text-sky ${
+                      isActive(pathname, item.href) && !item.href.includes("#") ? "text-sky" : ""
                     }`}
                   >
                     {item.label}
@@ -134,7 +134,7 @@ export default function Navbar({ nav, menu }: Props) {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-lg border border-gold/40 text-gold xl:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky/40 text-sky xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -147,22 +147,22 @@ export default function Navbar({ nav, menu }: Props) {
       </Container>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-24 bottom-0 z-30 flex flex-col border-t border-gold/20 bg-ink/95 backdrop-blur xl:hidden">
+        <div id="mobile-menu" className="fixed inset-x-0 top-24 bottom-0 z-30 flex flex-col border-t border-sky/20 bg-ink/95 backdrop-blur xl:hidden">
           <Container className="flex-1 overflow-y-auto py-4">
             <ul className="flex flex-col">
               {nav.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-white hover:text-gold">
+                  <Link href={item.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-white hover:text-sky">
                     {item.label}
                   </Link>
                   {item.dropdown && (
-                    <ul className="mb-2 border-l border-gold/25 pl-4">
+                    <ul className="mb-2 border-l border-sky/25 pl-4">
                       {menu.map((s) => (
                         <li key={s.slug}>
                           <Link
                             href={`/services/${s.slug}`}
                             onClick={() => setOpen(false)}
-                            className="block py-3 text-base text-cream hover:text-gold"
+                            className="block py-3 text-base text-cream hover:text-sky"
                           >
                             {s.title}
                           </Link>
@@ -174,7 +174,7 @@ export default function Navbar({ nav, menu }: Props) {
               ))}
             </ul>
           </Container>
-          <div className="shrink-0 border-t border-gold/20 bg-ink">
+          <div className="shrink-0 border-t border-sky/20 bg-ink">
             <Container className="py-4">
               <Button href="/contact#book" className="w-full">
                 Book Now

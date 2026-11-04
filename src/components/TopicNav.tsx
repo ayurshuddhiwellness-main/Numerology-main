@@ -31,8 +31,8 @@ export default function TopicNav({ topics }: Props) {
             <a
               href={`#${t.id}`}
               aria-current={active === t.id ? "location" : undefined}
-              className={`flex min-h-11 items-center rounded-lg border px-4 text-sm whitespace-nowrap transition-colors hover:text-gold lg:whitespace-normal lg:border-0 lg:px-3 lg:text-base ${
-                active === t.id ? "border-gold bg-maroon/40 text-gold" : "border-gold/25 text-cream"
+              className={`flex min-h-11 items-center rounded-lg border px-4 text-sm whitespace-nowrap transition-colors hover:text-sky lg:whitespace-normal lg:border-0 lg:px-3 lg:text-base ${
+                active === t.id ? "border-sky bg-azure/40 text-sky" : "border-sky/25 text-cream"
               }`}
             >
               {t.title}

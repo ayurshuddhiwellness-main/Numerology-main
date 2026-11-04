@@ -59,7 +59,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <ol className="mt-12 grid gap-6 text-left md:grid-cols-3 lg:mt-16">
             {steps(service.inputs).map((s, i) => (
               <li key={s.title} className="glass-card px-8 py-10">
-                <span className="text-lg font-semibold text-gold">0{i + 1}</span>
+                <span className="text-lg font-semibold text-sky">0{i + 1}</span>
                 <h3 className="mt-3 font-display text-2xl font-bold text-white lg:text-3xl">{s.title}</h3>
                 <p className="mt-4 text-base leading-relaxed lg:text-xl">{s.body}</p>
               </li>
