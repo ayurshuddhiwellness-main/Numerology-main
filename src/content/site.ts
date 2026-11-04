@@ -11,8 +11,8 @@ export const site = {
   tagline: "Dr. Abbhiraath Singh helps you understand your numbers and live in harmony with them",
   footerLine: "Your life, written in numbers",
   contact: {
-    email: "your@email.com", // TODO
-    phone: "+91 00000 00000", // TODO
+    email: "abbhiraathsingh@gmail.com", // from his brochure
+    phone: "+91 85100 49114", // from his brochure
     address: "Your address here", // TODO
     mapQuery: "", // TODO: e.g. "Sector 36, Greater Noida". The map appears once this is filled in.
   },
@@ -154,10 +154,78 @@ export const commitments = [
   },
 ];
 
-export const aboutIntro = {
-  statement: "Welcome. We help you understand the numbers that shape your life, and use them with clarity and care.",
-  body: "Dr. Abbhiraath Singh is a numerologist and holistic health practitioner. He reads your date of birth and name through Vedic and Chaldean numerology, and explains what they reveal in simple, practical terms: when to act, when to wait, and which small changes can bring your life into better balance. Every consultation is personal, and every number is calculated by hand.", // TODO: confirm biography with Dr. Singh
-};
+/* About page. Written from his profile and brochure PDFs. */
+export const about = {
+  intro: {
+    eyebrow: "His Story",
+    statement: "The power to change your life is already within you. Abbhiraath's work is to help you see it.",
+    paragraphs: [
+      "Abbhiraath Singh's guidance rests on two foundations: the body and the numbers. He holds a Master's in Yogic Science and a degree in pharmacy from an Ayurveda medical college, and he is a trained Nadi Vaidya, reading health through the pulse. So before he looks at your numbers, he looks at you as a whole person.",
+      "For more than ten years he has guided people through decisions about work, money, relationships and health. Alongside private consultations, he has run yoga and wellness programmes for companies and NGOs, and given his time to juvenile homes, social campaigns, yoga camps and natural-therapy initiatives.",
+      "Whoever he sits with, the aim is the same: practical remedies you can use, and the clarity to move forward with confidence.",
+    ],
+    image: { src: "/images/about-pulse-reading.jpg", width: 1280, height: 854, alt: "Abbhiraath Singh reading a woman's pulse during a consultation" },
+  },
+  method: {
+    eyebrow: "His Method",
+    title: "AstroNumeroYoga",
+    lead: "Numerology has its roots in ancient yogic and tantric traditions. AstroNumeroYoga, the method Abbhiraath created, brings those roots back together. Instead of reading one system on its own, he reads three together:",
+    pillars: [
+      { name: "Your stars", text: "Your astrological chart and the planetary influences active in your life now." },
+      { name: "Your numbers", text: "Your date of birth and your name, and the energy each one carries." },
+      { name: "Your body", text: "Your natural constitution and tendencies, seen through yoga and Ayurveda." },
+    ],
+    close: "From this he suggests a blend of yogic, astrological and numerological practices, chosen for you, to bring out your potential and keep your life moving in a positive direction.",
+    image: { src: "/images/about-yoga.jpg", width: 1000, height: 1419, alt: "Abbhiraath Singh holding a headstand on a yoga mat in a garden" },
+  },
+  areas: {
+    eyebrow: "Where He Helps",
+    title: "Guidance for every part of life",
+    list: [
+      { name: "Business", items: ["Business name, place and logo", "Partner evaluation", "Energy sessions before key meetings"] },
+      { name: "Career & money", items: ["Your current job", "Future growth", "The right people around you", "Money flow"] },
+      { name: "Relationships", items: ["Marriage", "Partner compatibility", "Understanding your children"] },
+      { name: "Health & wellbeing", items: ["Yoga and meditation", "Mental positivity sessions", "Stress and breathwork"] },
+      { name: "Home & workplace", items: ["Vastu for homes and offices", "Simple corrections, no rebuilding"] },
+    ],
+  },
+  quote: {
+    text: "The moment you start realising the enormous energy and potential of numbers, and of the tiny things in your surroundings, you will see your life change significantly.",
+    author: "Abbhiraath Singh",
+  },
+  beliefs: [
+    { title: "No miracle claims", text: "He won't promise overnight change. His aim is to help you recognise your own potential and use the power of numbers well." },
+    { title: "Small changes, real shifts", text: "You rarely need to rebuild your home or your life. Even where a water jar sits can change the energy of a space." },
+    { title: "You lead, he guides", text: "The answers are already within you. He helps you reach them with clarity instead of worry." },
+  ],
+  recognition: {
+    eyebrow: "Recognition",
+    title: "Awards & honours",
+    awards: [
+      { name: "Best Numerologist Award", by: "Governor of Chandigarh", year: "2016" },
+      { name: "Young Humanitarian Award", by: "Social Umbrella Connecting Humanity", year: "2018" },
+      { name: "Jyotish Kesari Award", by: "", year: "2018" },
+      { name: "Award of Honour", by: "Heart and Soul Walkathon", year: "2018" },
+      { name: "Award of Honour", by: "Dhoom Foundation, New Delhi", year: "2018" },
+      { name: "Uthkrushtha Sewa Sansthan Award", by: "", year: "2018" },
+      { name: "Commendation", by: "Delhi Police, mock drill", year: "2012" },
+    ],
+    hostsLabel: "Sessions and programmes conducted for",
+    hosts: [
+      "Artemis Group of Hospitals, Gurugram",
+      "Holdwell Components, Kolkata",
+      "Royal Elastomer, Raipur",
+      "Royal Fastener N E, Guwahati",
+      "Pietas Solutions, Delhi",
+      "Jyotish Prargana Oorja, Chandigarh",
+      "World Heart Day Walkathon, Haryana",
+    ],
+  },
+  cta: {
+    title: "Begin with a conversation",
+    text: "Share your date of birth and what's on your mind. Abbhiraath will take it from there.",
+  },
+} as const;
 
 export const reasons = [
   {

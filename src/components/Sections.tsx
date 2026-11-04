@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { services } from "@/content/services";
 import { commitments, numbers, practitioner, reasons } from "@/content/site";
 import { NumberCard, ServiceRow } from "./cards";
@@ -97,6 +98,12 @@ export function Practitioner() {
               </li>
             ))}
           </ul>
+          <Link
+            href="/about"
+            className="mt-6 inline-flex items-center gap-2 text-base font-medium text-sky underline-offset-4 hover:underline lg:text-lg"
+          >
+            Read his story <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </Container>
     </section>
