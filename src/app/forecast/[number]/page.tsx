@@ -68,7 +68,7 @@ export default async function NumberForecastPage({ params }: Props) {
 
           {/* Right: this week's reading */}
           <article>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky lg:text-lg">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg">
               Ruled by {n.planet}
             </p>
             <p className="mt-4 text-lg leading-relaxed text-white lg:text-xl">{n.general}</p>

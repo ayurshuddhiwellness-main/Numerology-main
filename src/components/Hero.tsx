@@ -43,7 +43,7 @@ export default function Hero() {
       <Container className="grid items-end gap-6 lg:min-h-[790px] lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-10">
         {/* Right on desktop: headline block. Shown first on mobile so the message leads. */}
         <div className="rise-group pt-10 lg:order-2 lg:self-center lg:pt-0 lg:pb-10">
-          <h1 className="font-display text-[44px] leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(72px,6.6vw,127px)]">
+          <h1 className="accent-em font-display text-[44px] leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(72px,6.6vw,127px)]">
             Your Life, Written <br className="hidden sm:block" />
             in <em className="italic">Numbers</em>
           </h1>

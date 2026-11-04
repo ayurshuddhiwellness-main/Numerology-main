@@ -31,7 +31,7 @@ export function buttonClass(variant: ButtonVariant = "filled") {
 /** Small sky label above section titles, e.g. "SERVICES". */
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-sky lg:text-lg ${className}`}>{children}</p>
+    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg ${className}`}>{children}</p>
   );
 }
 
@@ -39,7 +39,7 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 export function Title({ children, className = "", as: Tag = "h2" }: { children: ReactNode; className?: string; as?: "h1" | "h2" }) {
   return (
     <Tag
-      className={`font-display text-4xl leading-[1.1] font-bold text-white sm:text-5xl lg:text-[64px] [&_em]:italic ${className}`}
+      className={`font-display text-4xl leading-[1.1] accent-em font-bold text-white sm:text-5xl lg:text-[64px] [&_em]:italic ${className}`}
     >
       {children}
     </Tag>

@@ -11,7 +11,7 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
   return (
     <article className="grid items-center gap-8 md:grid-cols-2 lg:gap-24">
       <div className={flip ? "md:order-2" : ""}>
-        <span className="text-lg font-semibold text-sky lg:text-[22px]">0{index + 1}</span>
+        <span className="text-lg font-semibold text-gold lg:text-[22px]">0{index + 1}</span>
         <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[40px]">
           <Link href={`/services/${service.slug}`} className="hover:text-sky">
             {service.title}

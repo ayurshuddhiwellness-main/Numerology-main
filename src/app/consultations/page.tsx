@@ -17,7 +17,7 @@ export default function ConsultationsPage() {
           <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:mt-24 lg:grid-cols-3">
             {programs.map((p, i) => (
               <li key={p} className="glass-card flex flex-col px-8 py-10">
-                <span className="text-lg font-semibold text-sky">0{i + 1}</span>
+                <span className="text-lg font-semibold text-gold">0{i + 1}</span>
                 <h2 className="mt-3 font-display text-2xl font-bold text-white lg:text-3xl">{p}</h2>
                 <p className="mt-4 grow text-base text-sky-soft lg:text-xl">Contact for pricing</p>
                 <Button href={`/contact?plan=${encodeURIComponent(p)}#book`} variant="outline" className="mt-8 self-start">

@@ -11,7 +11,7 @@ export function Commitments({ id, cover }: { id?: string; cover?: { src: string;
   return (
     <section id={id} className="py-20 lg:py-[115px]">
       <Container>
-        <p className="font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[64px] [&_em]:italic">
+        <p className="accent-em font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[64px] [&_em]:italic">
           With <em>Dr. Abbhiraath Singh</em>, you discover what your name and date of birth reveal about your nature,
           your timing and your path. Our <em>commitment</em> includes:
         </p>
@@ -90,7 +90,7 @@ export function Practitioner() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   aria-hidden="true"
-                  className="shrink-0 text-sky"
+                  className="shrink-0 text-gold"
                 >
                   {highlightIcons[h.icon]}
                 </svg>

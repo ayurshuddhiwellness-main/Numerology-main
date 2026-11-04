@@ -28,9 +28,9 @@ export function Banner({
             <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-sky-soft/40" />
             <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-sky-soft/70" />
             <div className="absolute top-1/2 left-[30%] h-40 w-40 -translate-y-1/2 rounded-full bg-sky/30 blur-3xl" />
-            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-sky" />
-            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-sky" />
-            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-sky" />
+            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-gold" />
+            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-gold" />
+            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-gold" />
           </div>
           <div className="relative px-7 py-12 md:py-16 md:pr-14 lg:py-24">
             <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[64px]">
@@ -65,7 +65,7 @@ export function Pricing() {
               }`}
             >
               {p.popular && (
-                <span className="absolute top-0 right-6 rounded-b-lg gold-edge bg-sky px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
+                <span className="absolute top-0 right-6 rounded-b-lg gold-edge gold-fill px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
                   Popular
                 </span>
               )}
@@ -76,7 +76,7 @@ export function Pricing() {
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <p className="mt-10 font-display text-6xl font-bold text-sky italic">{p.price}</p>
+              <p className="mt-10 gold-text font-display text-6xl font-bold italic">{p.price}</p>
               <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="book" className="mt-10">
                 Book Now
               </Button>

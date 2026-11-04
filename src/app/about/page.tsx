@@ -64,7 +64,7 @@ export default function AboutPage() {
                 <li key={pl.name} className={`flex gap-5 border-b ${rule} py-5`}>
                   <span
                     aria-hidden="true"
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-sky/40 font-display text-2xl font-bold text-sky italic"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-gold/50 font-display text-2xl font-bold text-gold italic"
                   >
                     {i + 1}
                   </span>
@@ -118,7 +118,7 @@ export default function AboutPage() {
             <blockquote className="font-display text-3xl leading-[1.25] font-bold text-white italic sm:text-4xl lg:text-[48px]">
               &ldquo;{quote.text}&rdquo;
             </blockquote>
-            <figcaption className="mt-6 text-base font-semibold tracking-[0.18em] text-sky uppercase lg:text-lg">
+            <figcaption className="mt-6 text-base font-semibold tracking-[0.18em] text-gold uppercase lg:text-lg">
               {quote.author}
             </figcaption>
           </figure>
@@ -141,7 +141,7 @@ export default function AboutPage() {
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
             {recognition.awards.map((a) => (
               <li key={a.name + a.by} className="glass-card flex items-start gap-5 px-6 py-6">
-                <span className="font-display text-2xl font-bold text-sky italic lg:text-[28px]">{a.year}</span>
+                <span className="gold-text font-display text-2xl font-bold italic lg:text-[28px]">{a.year}</span>
                 <div>
                   <p className="font-semibold text-white lg:text-lg">{a.name}</p>
                   {a.by && <p className="mt-1 text-sm lg:text-base">{a.by}</p>}
@@ -149,11 +149,11 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-          <h3 className="mt-14 text-sm font-semibold tracking-[0.18em] text-sky uppercase lg:text-base">{recognition.hostsLabel}</h3>
+          <h3 className="mt-14 text-sm font-semibold tracking-[0.18em] text-gold uppercase lg:text-base">{recognition.hostsLabel}</h3>
           <ul className="mt-5 grid gap-x-10 gap-y-3 text-base sm:grid-cols-2 lg:grid-cols-3 lg:text-lg">
             {recognition.hosts.map((h) => (
               <li key={h} className="flex items-center gap-3">
-                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-sky" />
+                <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                 {h}
               </li>
             ))}
@@ -168,7 +168,9 @@ export default function AboutPage() {
             <Title>{cta.title}</Title>
             <p className="mx-auto mt-5 max-w-2xl text-base lg:text-xl">{cta.text}</p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button href="/contact#book">Book a Consultation</Button>
+              <Button href="/contact#book" variant="book">
+                Book a Consultation
+              </Button>
               <a
                 href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
                 className="text-base font-medium text-sky underline-offset-4 hover:underline lg:text-lg"
