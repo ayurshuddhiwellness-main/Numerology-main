@@ -54,31 +54,31 @@ const highlightIcons = {
 export function Practitioner() {
   const p = practitioner;
   return (
-    <section id="practitioner" className="py-20 lg:py-[115px]">
-      <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
-        <div className="gold-edge relative overflow-hidden rounded-[20px] border border-sky/25">
+    <section id="practitioner" className="py-16 lg:py-24">
+      <Container className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
+        {/* Cropped from the top: the upper part of the photo is plain wall */}
+        <div className="gold-edge relative aspect-[4/3] overflow-hidden rounded-[20px] border border-sky/25 sm:aspect-square">
           <Image
             src={p.image.src}
             alt={p.image.alt}
-            width={p.image.width}
-            height={p.image.height}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="h-auto w-full object-cover"
+            fill
+            sizes="(min-width: 1024px) 38vw, 100vw"
+            className="object-cover object-[50%_78%]"
           />
         </div>
 
         <div>
           <Eyebrow>{p.label}</Eyebrow>
           <Title>{p.name}</Title>
-          <p className="mt-5 font-display text-2xl font-bold text-sky lg:text-[32px]">{p.role}</p>
+          <p className="mt-3 font-display text-2xl font-bold text-sky lg:text-[28px]">{p.role}</p>
           {p.bio.map((para) => (
-            <p key={para.slice(0, 24)} className="mt-6 text-base leading-relaxed lg:text-xl">
+            <p key={para.slice(0, 24)} className="mt-5 text-base leading-relaxed lg:text-xl">
               {para}
             </p>
           ))}
-          <ul className="mt-10 border-t border-sky/25">
+          <ul className="mt-8 border-t border-sky/25">
             {p.highlights.map((h) => (
-              <li key={h.text} className="flex items-center gap-4 border-b border-sky/25 py-5 text-base text-white lg:text-xl">
+              <li key={h.text} className="flex items-center gap-4 border-b border-sky/25 py-4 text-base text-white lg:text-lg">
                 <svg
                   width="26"
                   height="26"
