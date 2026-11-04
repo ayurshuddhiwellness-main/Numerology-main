@@ -44,7 +44,7 @@ export default async function NumberForecastPage({ params }: Props) {
                     <Link
                       href={`/forecast/${x.number}`}
                       aria-current={active ? "page" : undefined}
-                      className={`flex items-center gap-4 rounded-xl px-3 py-2 font-display text-xl font-bold transition-colors lg:px-0 lg:py-0 lg:text-[32px] ${
+                      className={`flex items-center gap-4 rounded-xl px-3 py-2 font-display text-xl font-bold transition-colors lg:px-0 lg:py-0 lg:text-[28px] ${
                         active ? "text-sky" : "text-white hover:text-sky"
                       }`}
                     >
@@ -68,14 +68,14 @@ export default async function NumberForecastPage({ params }: Props) {
 
           {/* Right: this week's reading */}
           <article>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gold">
               Ruled by {n.planet}
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-white lg:text-xl">{n.general}</p>
+            <p className="mt-4 text-lg leading-relaxed text-white lg:text-lg">{n.general}</p>
             {blocks.map((b) => (
               <div key={b.heading} className="mt-10">
-                <h2 className="font-display text-2xl font-bold text-white lg:text-[32px]">{b.heading}</h2>
-                <p className="mt-3 text-base leading-relaxed lg:text-xl">{b.text}</p>
+                <h2 className="font-display text-2xl font-bold text-white lg:text-[28px]">{b.heading}</h2>
+                <p className="mt-3 text-base leading-relaxed lg:text-lg">{b.text}</p>
               </div>
             ))}
           </article>

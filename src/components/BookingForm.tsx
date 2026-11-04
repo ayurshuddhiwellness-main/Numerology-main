@@ -20,7 +20,7 @@ const options = [...services.map((s) => s.title), ...programs, ...planOptions];
 
 const field =
   "mt-2 w-full rounded-lg border border-cream/30 hover:border-gold bg-white px-4 py-3 text-base text-ink placeholder:text-ink/70 focus:border-gold focus:outline-2 focus:outline-gold";
-const labelCls = "text-base font-semibold text-white lg:text-[22px]";
+const labelCls = "text-base font-semibold text-white lg:text-lg";
 
 export default function BookingForm({ defaultService = "" }: { defaultService?: string }) {
   const [sent, setSent] = useState(false);

@@ -37,7 +37,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <section className="pt-20 lg:pt-28">
         <Container>
-          <p className="max-w-4xl text-lg leading-relaxed text-white lg:text-2xl">{service.intro}</p>
+          <p className="max-w-4xl text-lg leading-relaxed text-white lg:text-[22px]">{service.intro}</p>
           {/* Block on mobile (so the chip bar can stick for the whole list), grid from lg up */}
           <div className="mt-12 lg:grid lg:grid-cols-4 lg:gap-12">
             <TopicNav topics={service.topics.map(({ id, title }) => ({ id, title }))} />
@@ -60,8 +60,8 @@ export default async function ServiceDetailPage({ params }: Props) {
             {steps(service.inputs).map((s, i) => (
               <li key={s.title} className="glass-card px-8 py-10">
                 <span className="text-lg font-semibold text-gold">0{i + 1}</span>
-                <h3 className="mt-3 font-display text-2xl font-bold text-white lg:text-3xl">{s.title}</h3>
-                <p className="mt-4 text-base leading-relaxed lg:text-xl">{s.body}</p>
+                <h3 className="mt-3 font-display text-2xl font-bold text-white lg:text-[26px]">{s.title}</h3>
+                <p className="mt-4 text-base leading-relaxed lg:text-lg">{s.body}</p>
               </li>
             ))}
           </ol>

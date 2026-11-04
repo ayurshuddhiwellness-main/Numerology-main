@@ -11,13 +11,13 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
   return (
     <article className="grid items-center gap-8 md:grid-cols-2 lg:gap-24">
       <div className={flip ? "md:order-2" : ""}>
-        <span className="text-lg font-semibold text-gold lg:text-[22px]">0{index + 1}</span>
-        <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[40px]">
+        <span className="text-lg font-semibold text-gold lg:text-lg">0{index + 1}</span>
+        <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[34px]">
           <Link href={`/services/${service.slug}`} className="hover:text-sky">
             {service.title}
           </Link>
         </h3>
-        <p className="mt-4 max-w-[560px] text-base leading-relaxed lg:text-xl">{service.intro}</p>
+        <p className="mt-4 max-w-[560px] text-base leading-relaxed lg:text-lg">{service.intro}</p>
         {showButton && (
           <Button href={`/services/${service.slug}`} variant="outline" className="mt-6">
             More Detail
@@ -43,10 +43,10 @@ export function NumberCard({ n }: { n: NumberForecast }) {
         >
           <span className="gold-text pr-[0.08em]">{n.number}</span>
         </span>
-        <h3 className="mt-5 font-display text-3xl font-bold text-white lg:text-[40px]">
+        <h3 className="mt-5 font-display text-3xl font-bold text-white lg:text-[34px]">
           Number {n.number} ({n.planet})
         </h3>
-        <p className="mt-4 text-base leading-relaxed lg:text-xl">{n.summary}</p>
+        <p className="mt-4 text-base leading-relaxed lg:text-lg">{n.summary}</p>
       </Link>
     </li>
   );
@@ -60,8 +60,8 @@ export function PostCard({ post, headingLevel = "h3" }: { post: Post; headingLev
       <Link href={`/blog/${post.slug}`} aria-hidden="true" tabIndex={-1}>
         <NumeralArt numeral={post.numeral} label={`${post.title} cover`} className="h-60 sm:h-80 lg:h-[468px]" />
       </Link>
-      <p className="mt-6 text-base font-semibold text-sky lg:text-[22px]">{post.date}</p>
-      <H className="mt-3 font-display text-3xl font-bold text-white lg:text-5xl">
+      <p className="mt-6 text-base font-semibold text-sky lg:text-lg">{post.date}</p>
+      <H className="mt-3 font-display text-3xl font-bold text-white lg:text-[42px]">
         <Link href={`/blog/${post.slug}`} className="hover:text-sky">
           {post.title}
         </Link>
@@ -79,7 +79,7 @@ export function ExpertCard({ name, role, index }: { name: string; role: string; 
     <li className="text-center">
       {/* TODO: swap NumeralArt for each person's photo */}
       <NumeralArt numeral={String(index + 1)} label={`Photo of ${name}`} className="aspect-[417/504]" />
-      <h3 className="mt-5 font-display text-xl font-bold text-white lg:text-[32px]">{name}</h3>
+      <h3 className="mt-5 font-display text-xl font-bold text-white lg:text-[28px]">{name}</h3>
       <p className="mt-1 text-sm text-sky lg:text-base">{role}</p>
     </li>
   );

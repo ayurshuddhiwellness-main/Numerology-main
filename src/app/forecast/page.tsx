@@ -14,7 +14,7 @@ export default function ForecastPage() {
           <Title className="mx-auto max-w-[1100px]">
             What the numbers hold for you in this <em>Weekly Forecast</em>
           </Title>
-          <p className="mx-auto mt-6 max-w-[760px] text-base leading-relaxed lg:text-xl">
+          <p className="mx-auto mt-6 max-w-[760px] text-base leading-relaxed lg:text-lg">
             Find your Mulank (the day you were born, added to a single digit: the 23rd becomes 2 + 3 = 5) and choose your
             number below.
           </p>

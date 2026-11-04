@@ -65,7 +65,7 @@ export default function Navbar({ nav, menu }: Props) {
         <Logo />
 
         <nav aria-label="Main" className="hidden xl:block">
-          <ul className="flex items-center gap-12 text-lg text-white lg:text-xl">
+          <ul className="flex items-center gap-10 text-base text-white">
             {nav.map((item) =>
               item.dropdown ? (
                 <li key={item.label} ref={servicesRef} className="relative" onPointerEnter={(e) => hover(e, true)} onPointerLeave={(e) => hover(e, false)}>

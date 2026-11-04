@@ -11,15 +11,15 @@ export function Commitments({ id, cover }: { id?: string; cover?: { src: string;
   return (
     <section id={id} className="py-20 lg:py-[115px]">
       <Container>
-        <p className="accent-em font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[64px] [&_em]:italic">
+        <p className="accent-em font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[52px] [&_em]:italic">
           With <em>Dr. Abbhiraath Singh</em>, you discover what your name and date of birth reveal about your nature,
           your timing and your path. Our <em>commitment</em> includes:
         </p>
         <div className="mt-12 grid gap-10 md:grid-cols-3 lg:mt-20 lg:gap-16">
           {commitments.map((c) => (
             <div key={c.title}>
-              <h3 className="font-display text-2xl leading-tight font-bold text-white lg:text-[40px]">{c.title}</h3>
-              <p className="mt-4 text-base leading-relaxed lg:text-xl">{c.body}</p>
+              <h3 className="font-display text-2xl leading-tight font-bold text-white lg:text-[34px]">{c.title}</h3>
+              <p className="mt-4 text-base leading-relaxed lg:text-lg">{c.body}</p>
             </div>
           ))}
         </div>
@@ -71,15 +71,15 @@ export function Practitioner() {
         <div>
           <Eyebrow>{p.label}</Eyebrow>
           <Title>{p.name}</Title>
-          <p className="mt-3 font-display text-2xl font-bold text-sky lg:text-[28px]">{p.role}</p>
+          <p className="mt-3 font-display text-2xl font-bold text-sky lg:text-2xl">{p.role}</p>
           {p.bio.map((para) => (
-            <p key={para.slice(0, 24)} className="mt-5 text-base leading-relaxed lg:text-xl">
+            <p key={para.slice(0, 24)} className="mt-5 text-base leading-relaxed lg:text-lg">
               {para}
             </p>
           ))}
           <ul className="mt-8 border-t border-sky/25">
             {p.highlights.map((h) => (
-              <li key={h.text} className="flex items-center gap-4 border-b border-sky/25 py-4 text-base text-white lg:text-lg">
+              <li key={h.text} className="flex items-center gap-4 border-b border-sky/25 py-4 text-base text-white lg:text-base">
                 <svg
                   width="26"
                   height="26"
@@ -100,7 +100,7 @@ export function Practitioner() {
           </ul>
           <Link
             href="/about"
-            className="mt-6 inline-flex items-center gap-2 text-base font-medium text-sky underline-offset-4 hover:underline lg:text-lg"
+            className="mt-6 inline-flex items-center gap-2 text-base font-medium text-sky underline-offset-4 hover:underline lg:text-base"
           >
             Read his story <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -124,8 +124,8 @@ export function WhyChooseUs() {
           {reasons.map((r) => (
             <article key={r.title} className="glass-card flex flex-col items-center px-8 py-12 text-center">
               <span aria-hidden="true" className="mb-8 h-4 w-4 rounded-full bg-sky shadow-[0_0_40px_18px_color-mix(in_srgb,var(--color-sky)_45%,transparent)]" />
-              <h3 className="font-display text-3xl font-bold text-white lg:text-[40px]">{r.title}</h3>
-              <p className="mt-5 text-base leading-relaxed lg:text-xl">{r.body}</p>
+              <h3 className="font-display text-3xl font-bold text-white lg:text-[34px]">{r.title}</h3>
+              <p className="mt-5 text-base leading-relaxed lg:text-lg">{r.body}</p>
             </article>
           ))}
         </div>

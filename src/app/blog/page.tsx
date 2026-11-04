@@ -12,7 +12,7 @@ export default function BlogPage() {
     <>
       <section className="pt-28 lg:pt-[220px]">
         <Container>
-          <h1 className="text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(88px,7.3vw,140px)]">
+          <h1 className="text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(64px,5vw,96px)]">
             Number Stories
           </h1>
 
@@ -23,15 +23,15 @@ export default function BlogPage() {
             </Link>
             <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-16">
               <div>
-                <p className="text-base font-semibold text-sky lg:text-[22px]">{featured.date}</p>
-                <h2 className="mt-3 font-display text-3xl font-bold text-white lg:text-5xl">
+                <p className="text-base font-semibold text-sky lg:text-lg">{featured.date}</p>
+                <h2 className="mt-3 font-display text-3xl font-bold text-white lg:text-[42px]">
                   <Link href={`/blog/${featured.slug}`} className="hover:text-sky">
                     {featured.title}
                   </Link>
                 </h2>
               </div>
               <div>
-                <p className="text-base leading-relaxed lg:text-xl">{featured.excerpt}</p>
+                <p className="text-base leading-relaxed lg:text-lg">{featured.excerpt}</p>
                 <Button href={`/blog/${featured.slug}`} variant="outline" className="mt-6">
                   Read Article
                 </Button>

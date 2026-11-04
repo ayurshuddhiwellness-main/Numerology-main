@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -21,7 +22,7 @@ export function Button({ href, children, variant = "filled", className = "" }: B
 
 export function buttonClass(variant: ButtonVariant = "filled") {
   const base =
-    "relative inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-lg font-medium whitespace-nowrap transition duration-200 motion-reduce:transition-none motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer gold-edge";
+    "relative inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base lg:text-base font-medium whitespace-nowrap transition duration-200 motion-reduce:transition-none motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold cursor-pointer gold-edge";
   if (variant === "book") return `${base} gold-fill text-ink hover:shadow-gold-glow`;
   return variant === "filled"
     ? `${base} bg-sky text-ink hover:bg-sky-soft hover:shadow-gold-glow`
@@ -31,7 +32,7 @@ export function buttonClass(variant: ButtonVariant = "filled") {
 /** Small sky label above section titles, e.g. "SERVICES". */
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold lg:text-lg ${className}`}>{children}</p>
+    <p className={`mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-gold ${className}`}>{children}</p>
   );
 }
 
@@ -39,7 +40,7 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 export function Title({ children, className = "", as: Tag = "h2" }: { children: ReactNode; className?: string; as?: "h1" | "h2" }) {
   return (
     <Tag
-      className={`font-display text-4xl leading-[1.1] accent-em font-bold text-white sm:text-5xl lg:text-[64px] [&_em]:italic ${className}`}
+      className={`font-display text-4xl leading-[1.1] accent-em font-bold text-white sm:text-5xl lg:text-[52px] [&_em]:italic ${className}`}
     >
       {children}
     </Tag>
@@ -50,18 +51,44 @@ export function Title({ children, className = "", as: Tag = "h2" }: { children: 
  * Inner-page header from the Figma "Header" component:
  * a very large centred title with a wide image below it.
  */
-export function PageHeader({ title, numeral, label }: { title: ReactNode; numeral: string; label?: string }) {
+type HeaderImage = { src: string; alt: string; position?: string };
+
+export function PageHeader({
+  title,
+  numeral,
+  label,
+  image,
+}: {
+  title: ReactNode;
+  numeral: string;
+  label?: string;
+  /** A real photo for the header band. Without one, the numeral placeholder is shown. */
+  image?: HeaderImage;
+}) {
+  const band = "mt-8 h-40 sm:h-48 lg:mt-10 lg:h-64";
   return (
-    <section className="pt-28 lg:pt-[220px]">
+    <section className="pt-28 lg:pt-[160px]">
       <Container>
-        <h1 className="rise text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(88px,7.3vw,140px)]">
+        <h1 className="rise text-center font-display text-5xl leading-[1.05] font-bold text-white sm:text-7xl lg:text-[clamp(64px,5vw,96px)]">
           {title}
         </h1>
-        <NumeralArt
-          numeral={numeral}
-          label={label ?? "Decorative numerology artwork"}
-          className="mt-8 h-52 sm:h-72 lg:mt-12 lg:h-[450px]"
-        />
+        {image ? (
+          <div className={`gold-edge relative overflow-hidden rounded-[20px] border border-sky/25 ${band}`}>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority
+              sizes="(min-width: 1728px) 1632px, 100vw"
+              className="object-cover"
+              style={{ objectPosition: image.position ?? "50% 50%" }}
+            />
+            {/* Soft navy wash so a bright photo sits calmly on the dark page */}
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/45 via-ink/10 to-ink/20" />
+          </div>
+        ) : (
+          <NumeralArt numeral={numeral} label={label ?? "Decorative numerology artwork"} className={band} />
+        )}
       </Container>
     </section>
   );

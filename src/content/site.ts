@@ -13,8 +13,10 @@ export const site = {
   contact: {
     email: "abbhiraathsingh@gmail.com", // from his brochure
     phone: "+91 85100 49114", // from his brochure
-    address: "Your address here", // TODO
-    mapQuery: "", // TODO: e.g. "Sector 36, Greater Noida". The map appears once this is filled in.
+    address: "Ground floor, A228, Sector-36, Greater Noida",
+    // Exact pin (Yash Bhawan) from his Google Maps link, so the embedded map lands on the building
+    mapQuery: "28.4566923,77.5419424",
+    mapLink: "https://maps.app.goo.gl/5utE859ssF4nw65m8",
   },
   social: {
     facebook: "#", // TODO

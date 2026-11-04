@@ -33,10 +33,10 @@ export function Banner({
             <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-gold" />
           </div>
           <div className="relative px-7 py-12 md:py-16 md:pr-14 lg:py-24">
-            <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[64px]">
+            <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[52px]">
               {heading}
             </h2>
-            <p className="mt-5 text-base text-white lg:text-xl">{text}</p>
+            <p className="mt-5 text-base text-white lg:text-lg">{text}</p>
             <Button href={href} variant={href.includes("#book") ? "book" : "filled"} className="mt-8">
               {cta}
             </Button>
@@ -65,18 +65,18 @@ export function Pricing() {
               }`}
             >
               {p.popular && (
-                <span className="absolute top-0 right-6 rounded-b-lg gold-edge gold-fill px-5 py-2 font-display text-xl font-bold text-ink lg:text-2xl">
+                <span className="absolute top-0 right-6 rounded-b-lg gold-edge gold-fill px-5 py-2 font-display text-xl font-bold text-ink lg:text-[22px]">
                   Popular
                 </span>
               )}
-              <h3 className="font-display text-4xl font-bold text-white lg:text-5xl">{p.name}</h3>
-              <p className="mt-2 text-base font-semibold text-sky lg:text-[22px]">{p.tier}</p>
-              <ul className="mt-10 flex flex-col gap-5 text-base text-white lg:text-xl">
+              <h3 className="font-display text-4xl font-bold text-white lg:text-[42px]">{p.name}</h3>
+              <p className="mt-2 text-base font-semibold text-sky lg:text-lg">{p.tier}</p>
+              <ul className="mt-10 flex flex-col gap-5 text-base text-white lg:text-lg">
                 {p.features.map((f) => (
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              <p className="mt-10 text-base text-sky-soft lg:text-xl">Contact for pricing</p>
+              <p className="mt-10 text-base text-sky-soft lg:text-lg">Contact for pricing</p>
               <Button href={`/contact?plan=${encodeURIComponent(p.name)}#book`} variant="outline" className="mt-8">
                 Enquire
               </Button>
@@ -98,10 +98,10 @@ export function Testimonial() {
       <Container>
         <Eyebrow>Testimonial</Eyebrow>
         <figure>
-          <blockquote className="font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[64px]">
+          <blockquote className="font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[52px]">
             {testimonial.quote}
           </blockquote>
-          <figcaption className="mt-8 text-lg font-semibold text-white lg:text-[22px]">{testimonial.author}</figcaption>
+          <figcaption className="mt-8 text-lg font-semibold text-white lg:text-lg">{testimonial.author}</figcaption>
         </figure>
         <div aria-hidden="true" className="mt-12 flex justify-center gap-3">
           <span className="h-2.5 w-2.5 rounded-full bg-white" />
@@ -167,7 +167,7 @@ export function Footer() {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
             <div>
               <Logo />
-              <p className="mt-5 text-base lg:text-xl">{site.footerLine}</p>
+              <p className="mt-5 text-base lg:text-lg">{site.footerLine}</p>
               <div className="mt-6 flex gap-4">
                 {(Object.keys(socialIcons) as (keyof typeof socialIcons)[]).map((k) => (
                   <a key={k} href={site.social[k]} aria-label={k} className="text-white hover:text-sky">
@@ -181,8 +181,8 @@ export function Footer() {
 
             {footerLinks.map((col) => (
               <div key={col.heading}>
-                <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">{col.heading}</h3>
-                <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
+                <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">{col.heading}</h3>
+                <ul className="mt-5 flex flex-col gap-3 text-base lg:text-lg">
                   {col.links.map((l) => (
                     <li key={l.href}>
                       <Link href={l.href} className="hover:text-sky">
@@ -195,12 +195,12 @@ export function Footer() {
             ))}
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">
+              <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">
                 <Link href="/contact" className="hover:text-sky-soft">
                   Contact Us
                 </Link>
               </h3>
-              <ul className="mt-5 flex flex-col gap-3 text-base lg:text-xl">
+              <ul className="mt-5 flex flex-col gap-3 text-base lg:text-lg">
                 <li>
                   <a href={`mailto:${site.contact.email}`} className="hover:text-sky">
                     {site.contact.email}
@@ -216,7 +216,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-sky lg:text-[32px]">Get weekly number insights</h3>
+              <h3 className="font-display text-2xl font-bold text-sky lg:text-[28px]">Get weekly number insights</h3>
               {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
               <form className="mt-5 flex gap-3" action="#">
                 <label htmlFor="newsletter-email" className="sr-only">

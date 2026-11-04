@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 
-const list = "list-disc space-y-2 pl-6 text-base leading-relaxed marker:text-sky lg:text-lg";
+const list = "list-disc space-y-2 pl-6 text-base leading-relaxed marker:text-sky lg:text-base";
 
 /** A topic's items: the first few always shown, the rest slide open above a toggle that stays at the bottom. */
 export default function TopicItems({ items, shown }: { items: string[]; shown: number }) {

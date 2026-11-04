@@ -11,26 +11,37 @@ export default function ContactPage() {
   const details = [
     { label: "Phone", value: site.contact.phone, href: `tel:${site.contact.phone.replace(/\s/g, "")}` },
     { label: "Email", value: site.contact.email, href: `mailto:${site.contact.email}` },
-    { label: "Address", value: site.contact.address },
+    { label: "Address", value: site.contact.address, href: site.contact.mapLink, external: true },
   ];
 
   return (
     <>
-      <PageHeader title="Contact Us" numeral="2" />
+      <PageHeader
+        title="Contact Us"
+        numeral="2"
+        image={{
+          src: "/images/contact-header.jpg",
+          alt: "Hands holding a smartphone, with call, email and chat icons above it",
+          position: "50% 30%",
+        }}
+      />
 
       <section id="book" className="relative isolate scroll-mt-28 overflow-hidden py-20 lg:py-[100px]">
         <FigmaGlow variant="horoscope" />
-        <Container className="grid gap-6 lg:grid-cols-[678px_1fr] lg:gap-[50px]">
-          <ul className="flex flex-col gap-6 lg:gap-[50px]">
+        <Container className="grid grid-cols-1 gap-6 lg:grid-cols-[678px_1fr] lg:gap-[50px]">
+          <ul className="flex min-w-0 flex-col gap-6 lg:gap-[50px]">
             {details.map((d) => (
               <li key={d.label} className="glass-card px-8 py-8 lg:px-[53px] lg:py-[44px]">
-                <p className="text-base font-semibold text-white lg:text-[22px]">{d.label}</p>
+                <p className="text-base font-semibold text-white lg:text-lg">{d.label}</p>
                 {d.href ? (
-                  <a href={d.href} className="mt-1 block font-display text-3xl font-bold break-words text-white hover:text-sky lg:text-5xl">
+                  <a
+                    href={d.href}
+                    {...("external" in d && d.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="mt-1 block font-display text-2xl font-bold [overflow-wrap:anywhere] text-white hover:text-sky sm:text-3xl lg:text-[42px]">
                     {d.value}
                   </a>
                 ) : (
-                  <p className="mt-1 font-display text-3xl font-bold text-white lg:text-5xl">{d.value}</p>
+                  <p className="mt-1 font-display text-2xl font-bold text-white sm:text-3xl lg:text-[42px]">{d.value}</p>
                 )}
               </li>
             ))}
@@ -50,7 +61,7 @@ export default function ContactPage() {
           {site.contact.mapQuery ? (
             <iframe
               title="Map showing our location"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(site.contact.mapQuery)}&output=embed`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(site.contact.mapQuery)}&z=17&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="mt-12 h-[360px] w-full rounded-[20px] border border-sky/25 hover:border-gold lg:mt-16 lg:h-[579px]"

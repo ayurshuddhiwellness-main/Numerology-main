@@ -12,7 +12,7 @@ export default function ServicesPage() {
       <PageHeader title="Our Services" numeral="4" />
       <section className="py-20 lg:py-32">
         <Container>
-          <p className="font-display text-3xl leading-tight font-bold text-white sm:text-4xl lg:text-6xl [&_em]:italic">
+          <p className="font-display text-3xl leading-tight font-bold text-white sm:text-4xl lg:text-5xl [&_em]:italic">
             Four ways to bring <em>clarity</em> and balance to your <em>journey</em>: astrology, numerology, Vastu and
             personal guidance.
           </p>
