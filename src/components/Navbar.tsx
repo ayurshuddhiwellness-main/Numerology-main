@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import type { serviceMenu } from "@/content/services";
 import { Button, Container, Logo } from "./ui";
 
-type NavItem = { label: string; href: string; mega?: boolean };
+type NavItem = { label: string; href: string; dropdown?: boolean };
 type Props = { nav: NavItem[]; menu: typeof serviceMenu };
 
 function isActive(pathname: string, href: string) {
@@ -18,8 +18,8 @@ function isActive(pathname: string, href: string) {
 export default function Navbar({ nav, menu }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false); // mobile drawer
-  const [megaOpen, setMegaOpen] = useState(false); // desktop Services mega-menu
-  const megaRef = useRef<HTMLLIElement>(null);
+  const [servicesOpen, setServicesOpen] = useState(false); // desktop Services dropdown
+  const servicesRef = useRef<HTMLLIElement>(null);
   const caretRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
 
@@ -28,19 +28,19 @@ export default function Navbar({ nav, menu }: Props) {
   if (pathname !== lastPath) {
     setLastPath(pathname);
     setOpen(false);
-    setMegaOpen(false);
+    setServicesOpen(false);
   }
 
-  // Escape closes whatever is open; outside click closes the mega-menu
+  // Escape closes whatever is open; outside click closes the dropdown
   useEffect(() => {
-    if (!open && !megaOpen) return;
+    if (!open && !servicesOpen) return;
     const onClick = (e: MouseEvent) => {
-      if (!megaRef.current?.contains(e.target as Node)) setMegaOpen(false);
+      if (!servicesRef.current?.contains(e.target as Node)) setServicesOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
-      if (megaOpen) caretRef.current?.focus();
-      setMegaOpen(false);
+      if (servicesOpen) caretRef.current?.focus();
+      setServicesOpen(false);
       setOpen(false);
     };
     document.addEventListener("mousedown", onClick);
@@ -49,14 +49,14 @@ export default function Navbar({ nav, menu }: Props) {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [open, megaOpen]);
+  }, [open, servicesOpen]);
 
-  // Hover opens the mega-menu for a mouse only (touch uses the caret); a short delay bridges the gap to the panel
+  // Hover opens the dropdown for a mouse only (touch uses the caret); a short delay bridges the gap to the panel
   const hover = (e: React.PointerEvent, on: boolean) => {
     if (e.pointerType !== "mouse") return;
     window.clearTimeout(closeTimer.current);
-    if (on) setMegaOpen(true);
-    else closeTimer.current = window.setTimeout(() => setMegaOpen(false), 150);
+    if (on) setServicesOpen(true);
+    else closeTimer.current = window.setTimeout(() => setServicesOpen(false), 150);
   };
 
   return (
@@ -67,8 +67,8 @@ export default function Navbar({ nav, menu }: Props) {
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-12 text-lg text-white lg:text-xl">
             {nav.map((item) =>
-              item.mega ? (
-                <li key={item.label} ref={megaRef} onPointerEnter={(e) => hover(e, true)} onPointerLeave={(e) => hover(e, false)}>
+              item.dropdown ? (
+                <li key={item.label} ref={servicesRef} className="relative" onPointerEnter={(e) => hover(e, true)} onPointerLeave={(e) => hover(e, false)}>
                   <div className="flex items-center gap-2">
                     <Link
                       href={item.href}
@@ -80,10 +80,10 @@ export default function Navbar({ nav, menu }: Props) {
                       ref={caretRef}
                       type="button"
                       aria-label="Show services"
-                      aria-expanded={megaOpen}
+                      aria-expanded={servicesOpen}
                       aria-controls="services-menu"
                       // A mouse already opened it on hover, so a click keeps it open; keyboard and touch toggle
-                      onClick={(e) => setMegaOpen((e.nativeEvent as PointerEvent).pointerType === "mouse" || ((v) => !v))}
+                      onClick={(e) => setServicesOpen((e.nativeEvent as PointerEvent).pointerType === "mouse" || ((v) => !v))}
                       className="flex h-11 w-6 items-center justify-center hover:text-gold"
                     >
                       <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
@@ -91,44 +91,23 @@ export default function Navbar({ nav, menu }: Props) {
                       </svg>
                     </button>
                   </div>
-                  {megaOpen && (
-                    // Not inside a positioned parent on purpose: it spans the header width
-                    <div id="services-menu" className="absolute inset-x-0 top-full">
-                      <Container>
-                        <div className="grid grid-cols-4 gap-8 rounded-2xl border border-gold/25 bg-ink/95 p-8 text-base shadow-2xl backdrop-blur">
-                          {menu.map((s) => (
-                            <div key={s.slug}>
-                              <Link
-                                href={`/services/${s.slug}`}
-                                onClick={() => setMegaOpen(false)}
-                                className="font-display text-2xl font-bold text-gold hover:text-gold-soft"
-                              >
-                                {s.title}
-                              </Link>
-                              <ul className="mt-3">
-                                {s.featured.map((t) => (
-                                  <li key={t.id}>
-                                    <Link
-                                      href={`/services/${s.slug}#${t.id}`}
-                                      onClick={() => setMegaOpen(false)}
-                                      className="block py-2 text-cream hover:text-gold"
-                                    >
-                                      {t.title}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                              <Link
-                                href={`/services/${s.slug}`}
-                                onClick={() => setMegaOpen(false)}
-                                className="mt-2 inline-block py-2 text-sm font-semibold text-gold hover:text-gold-soft"
-                              >
-                                View all {s.count} topics →
-                              </Link>
-                            </div>
-                          ))}
-                        </div>
-                      </Container>
+                  {servicesOpen && (
+                    <div id="services-menu" className="absolute top-full left-1/2 w-80 -translate-x-1/2 pt-4">
+                      <ul className="rounded-2xl border border-gold/25 bg-ink/95 p-3 shadow-2xl backdrop-blur">
+                        {menu.map((s) => (
+                          <li key={s.slug}>
+                            <Link
+                              href={`/services/${s.slug}`}
+                              onClick={() => setServicesOpen(false)}
+                              className={`block rounded-lg px-4 py-3 text-base transition-colors hover:bg-maroon/40 hover:text-gold ${
+                                pathname === `/services/${s.slug}` ? "text-gold" : ""
+                              }`}
+                            >
+                              {s.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                 </li>
@@ -176,7 +155,7 @@ export default function Navbar({ nav, menu }: Props) {
                   <Link href={item.href} onClick={() => setOpen(false)} className="block py-3 text-lg text-white hover:text-gold">
                     {item.label}
                   </Link>
-                  {item.mega && (
+                  {item.dropdown && (
                     <ul className="mb-2 border-l border-gold/25 pl-4">
                       {menu.map((s) => (
                         <li key={s.slug}>

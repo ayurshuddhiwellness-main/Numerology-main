@@ -364,7 +364,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Consultations", href: "/consultations" },
-  { label: "Services", href: "/services", mega: true },
+  { label: "Services", href: "/services", dropdown: true },
   { label: "Forecast", href: "/forecast" },
   { label: "Blog", href: "/blog" },
 ];

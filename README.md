@@ -28,7 +28,7 @@ Import the repo on [Vercel](https://vercel.com/new). No settings need changing; 
 | Shared cards (service, number, blog, expert) | `src/components/cards.tsx` |
 | Service topic card and sticky topic navigator | `src/components/TopicCard.tsx`, `src/components/TopicNav.tsx` |
 | Colours and fonts (the brand) | `src/app/globals.css` (`@theme` block) |
-| Header, Services mega-menu, mobile drawer | `src/components/Navbar.tsx` |
+| Header, Services dropdown (the 4 umbrella services only), mobile drawer | `src/components/Navbar.tsx` |
 | Hero with Dr. Singh's photo | `src/components/Hero.tsx` |
 | Commitments, Experts, Why Choose Us, Services, Forecast sections | `src/components/Sections.tsx` |
 | Banner, Pricing, Testimonial, Blog strip, Footer | `src/components/Sections2.tsx` |

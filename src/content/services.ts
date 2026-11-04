@@ -13,7 +13,6 @@ export type Topic = {
   items: string[];
   disclaimer?: string;
   lifeAreas: LifeArea[]; // data only for now, no UI yet
-  featured?: boolean; // shown in the Services mega-menu
 };
 
 export type Service = {
@@ -48,7 +47,6 @@ export const services: Service[] = [
           "Personality & Life Path Insights",
         ],
         lifeAreas: ["purpose"],
-        featured: true,
       },
       {
         id: "career-business-astrology",
@@ -66,7 +64,6 @@ export const services: Service[] = [
           "Career Timing & Dasha Analysis",
         ],
         lifeAreas: ["business", "timing"],
-        featured: true,
       },
       {
         id: "marriage-relationship-astrology",
@@ -84,7 +81,6 @@ export const services: Service[] = [
           "Family & Marital Harmony Guidance",
         ],
         lifeAreas: ["marriage", "timing"],
-        featured: true,
       },
       {
         id: "child-family-astrology",
@@ -151,7 +147,6 @@ export const services: Service[] = [
           "Important Life Event Timing",
         ],
         lifeAreas: ["timing"],
-        featured: true,
       },
       {
         id: "muhurat-auspicious-timing",
@@ -168,7 +163,6 @@ export const services: Service[] = [
           "Important Personal Event Muhurat",
         ],
         lifeAreas: ["timing", "business", "property"],
-        featured: true,
       },
       {
         id: "nakshatra-planetary-remedies",
@@ -227,7 +221,6 @@ export const services: Service[] = [
           "Auspicious Name Number Recommendations",
         ],
         lifeAreas: ["baby"],
-        featured: true,
       },
       {
         id: "personal-name-numerology",
@@ -245,7 +238,6 @@ export const services: Service[] = [
           "Name & Date of Birth Compatibility",
         ],
         lifeAreas: ["purpose"],
-        featured: true,
       },
       {
         id: "business-brand-numerology",
@@ -269,7 +261,6 @@ export const services: Service[] = [
           "Office & Shop Name Numerology",
         ],
         lifeAreas: ["business"],
-        featured: true,
       },
       {
         id: "marriage-relationship-numerology",
@@ -287,7 +278,6 @@ export const services: Service[] = [
           "Couple Name Analysis",
         ],
         lifeAreas: ["marriage"],
-        featured: true,
       },
       {
         id: "career-education-professional-growth",
@@ -336,7 +326,6 @@ export const services: Service[] = [
           "Personal Year & Monthly Number Forecast",
         ],
         lifeAreas: ["timing", "property"],
-        featured: true,
       },
       {
         id: "annual-life-cycle-numerology",
@@ -380,7 +369,6 @@ export const services: Service[] = [
           "Staircase & Parking Vastu",
         ],
         lifeAreas: ["property"],
-        featured: true,
       },
       {
         id: "commercial-business-vastu",
@@ -402,7 +390,6 @@ export const services: Service[] = [
           "Meeting Room & Conference Area Vastu",
         ],
         lifeAreas: ["business", "property"],
-        featured: true,
       },
       {
         id: "plot-property-vastu",
@@ -420,7 +407,6 @@ export const services: Service[] = [
           "Boundary Wall & Gate Placement",
         ],
         lifeAreas: ["property"],
-        featured: true,
       },
       {
         id: "directional-energy-analysis",
@@ -437,7 +423,6 @@ export const services: Service[] = [
           "Space Utilisation & Directional Alignment",
         ],
         lifeAreas: ["property"],
-        featured: true,
       },
       {
         id: "vastu-corrections-remedies",
@@ -454,7 +439,6 @@ export const services: Service[] = [
           "Pooja & Spiritual Space Recommendations",
         ],
         lifeAreas: ["property"],
-        featured: true,
       },
       {
         id: "specialised-vastu-services",
@@ -495,7 +479,6 @@ export const services: Service[] = [
           "Personal Strengths & Potential Discovery",
         ],
         lifeAreas: ["purpose"],
-        featured: true,
       },
       {
         id: "corporate-business-consultancy",
@@ -511,18 +494,15 @@ export const services: Service[] = [
           "Corporate Wellness & Spiritual Workshops",
         ],
         lifeAreas: ["business"],
-        featured: true,
       },
     ],
   },
 ];
 
-/** Light version of the services for the Navbar, so the client bundle does not carry every item. */
+/** Just the umbrella services, for the Navbar (topics stay on each service's own page). */
 export const serviceMenu = services.map((s) => ({
   slug: s.slug,
   title: s.title,
-  count: s.topics.length,
-  featured: s.topics.filter((t) => t.featured).map(({ id, title }) => ({ id, title })),
 }));
 
 /** Consultation programs (the /consultations page). No prices exist yet. */
