@@ -10,7 +10,7 @@ import { Button, NumeralArt } from "./ui";
 export function ServiceRow({ service, index, showButton = true }: { service: Service; index: number; showButton?: boolean }) {
   const flip = index % 2 === 1;
   return (
-    <article className="grid items-center gap-8 md:grid-cols-2 lg:gap-24">
+    <article className="grid items-center gap-5 md:grid-cols-2 md:gap-8 lg:gap-24">
       <div className={flip ? "md:order-2" : ""}>
         <span className="text-lg font-semibold text-gold lg:text-lg">0{index + 1}</span>
         <h3 className="mt-3 font-display text-3xl font-bold text-white lg:text-[34px]">
@@ -29,7 +29,7 @@ export function ServiceRow({ service, index, showButton = true }: { service: Ser
         href={`/services/${service.slug}`}
         tabIndex={-1}
         aria-hidden="true"
-        className="gold-edge group relative block h-56 overflow-hidden rounded-[20px] border border-sky/25 sm:h-72 lg:h-[300px]"
+        className="gold-edge group relative -order-1 block h-48 overflow-hidden rounded-[20px] border border-sky/25 sm:h-72 md:order-none lg:h-[300px]"
       >
         <Image
           src={service.image.src}

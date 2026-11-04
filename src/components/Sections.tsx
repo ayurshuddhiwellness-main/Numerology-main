@@ -9,22 +9,22 @@ import { Button, Container, Eyebrow, NumeralArt, Title } from "./ui";
 /* ---------- Commitment statement + three points (Home, About) ---------- */
 export function Commitments({ id, cover }: { id?: string; cover?: { src: string; alt: string } }) {
   return (
-    <section id={id} className="py-20 lg:py-[115px]">
+    <section id={id} className="py-14 lg:py-[115px]">
       <Container>
         <p className="accent-em font-display text-3xl leading-[1.2] font-bold text-white sm:text-4xl lg:text-[52px] [&_em]:italic">
           With <em>Dr. Abbhiraath Singh</em>, you discover what your name and date of birth reveal about your nature,
           your timing and your path. Our <em>commitment</em> includes:
         </p>
-        <div className="mt-12 grid gap-10 md:grid-cols-3 lg:mt-20 lg:gap-16">
+        <div className="mt-9 grid gap-7 md:mt-12 md:grid-cols-3 md:gap-10 lg:mt-20 lg:gap-16">
           {commitments.map((c) => (
-            <div key={c.title}>
-              <h3 className="font-display text-2xl leading-tight font-bold text-white lg:text-[34px]">{c.title}</h3>
-              <p className="mt-4 text-base leading-relaxed lg:text-lg">{c.body}</p>
+            <div key={c.title} className="border-l-2 border-gold/45 pl-4 md:border-0 md:pl-0">
+              <h3 className="font-display text-xl leading-tight font-bold text-white sm:text-2xl lg:text-[34px]">{c.title}</h3>
+              <p className="mt-2 text-base leading-relaxed md:mt-4 lg:text-lg">{c.body}</p>
             </div>
           ))}
         </div>
         {cover ? (
-          <div className="relative mt-14 h-56 overflow-hidden rounded-[20px] border border-gold/25 sm:h-72 lg:mt-20 lg:h-[380px]">
+          <div className="relative mt-10 h-44 overflow-hidden rounded-[20px] border border-gold/25 sm:h-72 md:mt-14 lg:mt-20 lg:h-[380px]">
             <Image src={cover.src} alt={cover.alt} fill sizes="(min-width: 1800px) 1728px, 100vw" className="object-cover" />
           </div>
         ) : (
@@ -55,7 +55,7 @@ const highlightIcons = {
 export function Practitioner() {
   const p = practitioner;
   return (
-    <section id="practitioner" className="py-16 lg:py-24">
+    <section id="practitioner" className="py-14 lg:py-24">
       <Container className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
         {/* Cropped from the top: the upper part of the photo is plain wall */}
         <div className="gold-edge relative aspect-[4/3] overflow-hidden rounded-[20px] border border-sky/25 sm:aspect-square">
@@ -113,14 +113,14 @@ export function Practitioner() {
 /* ---------- Why choose us (Home, About) ---------- */
 export function WhyChooseUs() {
   return (
-    <section className="relative isolate overflow-hidden py-20 lg:py-[115px]">
+    <section className="relative isolate overflow-hidden py-14 lg:py-[115px]">
       <FigmaGlow variant="choose" />
       <Container>
         <Eyebrow>Why choose us</Eyebrow>
         <Title>
           Discover <em>Your Path</em> Through Numbers
         </Title>
-        <div className="mt-12 grid gap-6 md:grid-cols-3 lg:mt-16">
+        <div className="swipe-row mt-9 grid gap-6 md:mt-12 md:grid-cols-3 lg:mt-16">
           {reasons.map((r) => (
             <article key={r.title} className="glass-card flex flex-col items-center px-8 py-12 text-center">
               <span aria-hidden="true" className="mb-8 h-4 w-4 rounded-full bg-sky shadow-[0_0_40px_18px_color-mix(in_srgb,var(--color-sky)_45%,transparent)]" />
@@ -137,7 +137,7 @@ export function WhyChooseUs() {
 /* ---------- Services preview (Home: the four umbrella services) ---------- */
 export function ServicesPreview() {
   return (
-    <section id="services" className="py-20 lg:py-[115px]">
+    <section id="services" className="py-14 lg:py-[115px]">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -150,7 +150,7 @@ export function ServicesPreview() {
             See All Services
           </Button>
         </div>
-        <div className="mt-14 flex flex-col gap-14 lg:mt-20 lg:gap-24">
+        <div className="mt-10 flex flex-col gap-12 md:mt-14 md:gap-14 lg:mt-20 lg:gap-24">
           {services.map((s, i) => (
             <ServiceRow key={s.slug} service={s} index={i} showButton={false} />
           ))}
@@ -164,7 +164,7 @@ export function ServicesPreview() {
 export function ForecastGrid({ limit, showTitle = true, showButton = true }: { limit?: number; showTitle?: boolean; showButton?: boolean }) {
   const list = limit ? numbers.slice(0, limit) : numbers;
   return (
-    <section id="forecast" className="relative isolate overflow-hidden py-20 lg:py-[115px]">
+    <section id="forecast" className="relative isolate overflow-hidden py-14 lg:py-[115px]">
       <FigmaGlow variant="horoscope" />
       <Container className="text-center">
         {showTitle && (
@@ -175,13 +175,13 @@ export function ForecastGrid({ limit, showTitle = true, showButton = true }: { l
             </Title>
           </>
         )}
-        <ul className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 ${showTitle ? "mt-12 lg:mt-16" : ""}`}>
+        <ul className={`swipe-row grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 ${showTitle ? "mt-9 md:mt-12 lg:mt-16" : ""}`}>
           {list.map((n) => (
             <NumberCard key={n.number} n={n} />
           ))}
         </ul>
         {showButton && (
-          <div className="mt-12">
+          <div className="mt-8 md:mt-12">
             <Button href="/forecast" variant="outline">
               All Numbers
             </Button>

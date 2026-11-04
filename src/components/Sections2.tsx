@@ -52,13 +52,13 @@ export function Banner({
 /* ---------- Consultation plans (Home, Services, Forecast pages) ---------- */
 export function Pricing() {
   return (
-    <section id="consultations" className="scroll-mt-28 py-20 lg:py-[115px]">
+    <section id="consultations" className="scroll-mt-28 py-14 lg:py-[115px]">
       <Container className="text-center">
         <Eyebrow>Consultations</Eyebrow>
         <Title>
           Choose Your <em>Consultation</em>
         </Title>
-        <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3">
+        <div className="swipe-row mt-9 grid gap-6 md:mt-12 lg:mt-16 lg:grid-cols-3">
           {plans.map((p) => (
             <article
               key={p.name}
@@ -96,7 +96,7 @@ export function Pricing() {
 /* ---------- Testimonial (Home) ---------- */
 export function Testimonial() {
   return (
-    <section className="py-20 lg:py-[115px]">
+    <section className="py-14 lg:py-[115px]">
       <Container>
         <Eyebrow>Testimonial</Eyebrow>
         <figure>
@@ -119,7 +119,7 @@ export function Testimonial() {
 export function BlogStrip({ excludeSlug, title }: { excludeSlug?: string; title?: React.ReactNode }) {
   const list = posts.filter((p) => p.slug !== excludeSlug).slice(0, 2);
   return (
-    <section id="blog" className="py-20 lg:py-[115px]">
+    <section id="blog" className="py-14 lg:py-[115px]">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
@@ -136,7 +136,7 @@ export function BlogStrip({ excludeSlug, title }: { excludeSlug?: string; title?
             More Stories
           </Button>
         </div>
-        <div className="mt-12 grid gap-10 md:grid-cols-2 lg:mt-16 lg:gap-6">
+        <div className="swipe-row mt-9 grid gap-10 md:mt-12 md:grid-cols-2 lg:mt-16 lg:gap-6">
           {list.map((p) => (
             <PostCard key={p.slug} post={p} />
           ))}
@@ -166,8 +166,8 @@ export function Footer() {
       <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-40 -z-10 h-64 rounded-full bg-azure/60 blur-[100px]" />
       <Container>
         <div className="fade-rule pt-16 lg:pt-24">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
-            <div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-12 lg:grid-cols-[1.5fr_1fr_1.5fr_1.3fr_1.6fr]">
+            <div className="col-span-2 sm:col-span-1">
               <Logo />
               <p className="mt-5 text-base lg:text-lg">{site.footerLine}</p>
               <div className="mt-6 flex gap-4">
@@ -196,7 +196,7 @@ export function Footer() {
               </div>
             ))}
 
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <h3 className="font-display text-2xl font-bold text-gold lg:text-[28px]">
                 <Link href="/contact" className="transition-colors hover:text-gold-soft">
                   Contact Us
@@ -217,7 +217,7 @@ export function Footer() {
               </ul>
             </div>
 
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <h3 className="font-display text-2xl font-bold text-gold lg:text-[28px]">Get weekly number insights</h3>
               {/* TODO: connect to a newsletter service (e.g. Mailchimp, Brevo) */}
               <form className="mt-5 flex gap-3" action="#">
@@ -231,7 +231,7 @@ export function Footer() {
                   placeholder="Your Email"
                   className="min-w-0 flex-1 rounded-lg border border-cream/30 hover:border-gold bg-transparent px-4 py-3 text-base text-white placeholder:text-cream/70 focus:border-gold focus:outline-2 focus:outline-gold"
                 />
-                <button type="submit" className={buttonClass("book")}>
+                <button type="submit" className={`${buttonClass("book")} shrink-0 px-5`}>
                   Subscribe
                 </button>
               </form>

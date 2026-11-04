@@ -48,7 +48,7 @@ export default function Hero() {
             in <em className="italic">Numbers</em>
           </h1>
           <p className="mt-6 max-w-[620px] text-lg leading-relaxed text-white lg:mt-8 lg:text-lg">{site.tagline}</p>
-          <div className="mt-8 flex flex-wrap gap-4 lg:mt-10 lg:gap-5">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:gap-4 lg:mt-10 lg:gap-5">
             <Button href="/contact#book" variant="book">
               Book a Consultation
             </Button>
@@ -75,7 +75,7 @@ export default function Hero() {
             height={1100}
             priority
             sizes="(min-width: 1024px) 396px, 70vw"
-            className="relative h-auto w-[70%] max-w-[396px] drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)] lg:w-[396px]"
+            className="relative h-auto w-[60%] max-w-[396px] drop-shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:w-[70%] lg:w-[396px]"
           />
         </div>
       </Container>

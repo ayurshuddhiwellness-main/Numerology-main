@@ -365,3 +365,39 @@ a.glass-card:hover {
     scroll-behavior: auto;
   }
 }
+
+/*
+  Phone-only swipe row: a card grid becomes one horizontal, snap-scrolling row,
+  with the next card peeking in from the edge. From md (768px) up the element's
+  own grid classes take over again.
+*/
+@media (max-width: 767.98px) {
+  .swipe-row {
+    display: flex !important;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    margin-inline: -20px;
+    padding: 6px 20px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .swipe-row::-webkit-scrollbar {
+    display: none;
+  }
+  .swipe-row > * {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+}
+@media (min-width: 640px) and (max-width: 767.98px) {
+  .swipe-row {
+    scroll-padding-inline: 32px;
+    margin-inline: -32px;
+    padding-inline: 32px;
+  }
+  .swipe-row > * {
+    flex-basis: 58%;
+  }
+}
