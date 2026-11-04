@@ -25,19 +25,21 @@ export function Banner({
       <Container>
         <div className="relative isolate grid overflow-hidden rounded-[24px] border border-sky/20 gold-edge hover:shadow-gold-glow bg-azure bg-[radial-gradient(ellipse_at_30%_45%,color-mix(in_srgb,var(--color-sky)_35%,transparent),transparent_65%),linear-gradient(to_bottom_right,transparent,color-mix(in_srgb,var(--color-ink)_60%,transparent))] md:grid-cols-2">
           <div aria-hidden="true" className="relative hidden min-h-[320px] md:block">
-            <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-sky-soft/40" />
-            <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-sky-soft/70" />
+            <div className="absolute top-[-40%] left-[-15%] aspect-square w-[85%] rounded-full border border-gold-soft/30" />
+            <div className="absolute top-[10%] left-[10%] aspect-square w-[75%] rounded-full border-2 border-dashed border-gold-soft/55" />
             <div className="absolute top-1/2 left-[30%] h-40 w-40 -translate-y-1/2 rounded-full bg-sky/30 blur-3xl" />
-            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-gold" />
-            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-gold" />
-            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-gold" />
+            {/* warm glow behind the sparkles */}
+            <div className="absolute top-[47%] left-[34%] h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/30 blur-2xl" />
+            <Sparkle className="absolute top-[42%] left-[34%] h-7 w-7 text-gold-soft drop-shadow-[0_0_6px_rgba(214,175,84,0.9)]" />
+            <Sparkle className="absolute top-[52%] left-[30%] h-5 w-5 text-gold-soft drop-shadow-[0_0_6px_rgba(214,175,84,0.9)]" />
+            <Sparkle className="absolute top-[52%] left-[38%] h-5 w-5 text-gold-soft drop-shadow-[0_0_6px_rgba(214,175,84,0.9)]" />
           </div>
           <div className="relative px-7 py-12 md:py-16 md:pr-14 lg:py-24">
-            <h2 className="font-display text-4xl leading-[1.1] font-bold text-white lg:text-[52px]">
+            <h2 className="accent-em font-display text-4xl leading-[1.1] font-bold text-white lg:text-[52px]">
               {heading}
             </h2>
             <p className="mt-5 text-base text-white lg:text-lg">{text}</p>
-            <Button href={href} variant={href.includes("#book") ? "book" : "filled"} className="mt-8">
+            <Button href={href} variant="book" className="mt-8">
               {cta}
             </Button>
           </div>

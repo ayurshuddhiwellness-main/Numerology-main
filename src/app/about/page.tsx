@@ -32,13 +32,13 @@ export default function AboutPage() {
             {intro.statement}
           </p>
           <div className="mt-10 grid items-center gap-10 lg:mt-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-            <div className={`gold-edge relative aspect-[4/3] overflow-hidden rounded-[20px] border ${rule} sm:aspect-[4/5]`}>
+            <div className={`gold-edge relative aspect-[4/3] overflow-hidden rounded-[20px] border ${rule} sm:aspect-[10/11]`}>
               <Image
                 src={intro.image.src}
                 alt={intro.image.alt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover object-[50%_78%]"
+                className="object-cover object-[50%_78%] sm:object-bottom"
               />
             </div>
             <div className="flex flex-col gap-5">

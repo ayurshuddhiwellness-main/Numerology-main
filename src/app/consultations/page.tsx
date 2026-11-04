@@ -8,7 +8,15 @@ export const metadata: Metadata = { title: "Consultation Programs" };
 export default function ConsultationsPage() {
   return (
     <>
-      <PageHeader title="Consultations" numeral={String(programs.length)} />
+      <PageHeader
+        title="Consultations"
+        numeral={String(programs.length)}
+        image={{
+          src: "/images/consultations-header.jpg",
+          alt: "A calm, sunlit sitting room with sofas and tall windows",
+          position: "50% 60%",
+        }}
+      />
       <section className="py-20 lg:py-32">
         <Container>
           <p className="font-display text-3xl leading-tight font-bold text-white sm:text-4xl lg:text-5xl [&_em]:italic">

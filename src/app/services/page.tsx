@@ -9,7 +9,15 @@ export const metadata: Metadata = { title: "Our Services" };
 export default function ServicesPage() {
   return (
     <>
-      <PageHeader title="Our Services" numeral="4" />
+      <PageHeader
+        title="Our Services"
+        numeral="4"
+        image={{
+          src: "/images/services-header.jpg",
+          alt: "Morning sunlight streaming through a tall window into a quiet room",
+          position: "50% 45%",
+        }}
+      />
       <section className="py-20 lg:py-32">
         <Container>
           <p className="font-display text-3xl leading-tight font-bold text-white sm:text-4xl lg:text-5xl [&_em]:italic">
